@@ -8,10 +8,12 @@ A játék az 1. genecrációs pokemon másolata.
 # feladatok
 Olio:
  - weboldal: program bemutatása
- 
+ - pokedex.py
 
 MBalint:
  - weboldal: csapat bemutatás
+ - classes.py
 
 HMark:
  - weboldal: virtuális cég bemutatása
+ - menu.py
