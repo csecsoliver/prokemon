@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-12T10:48:59.149Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="14VdbNNIg8T70lIfUiMc" version="24.0.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-12T11:25:50.286Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="nVNOqcwSpwhZoGv8u_tA" version="24.0.5" type="github">
   <diagram name="1 oldal" id="rJjOgKtLqAj0au_ih0mq">
     <mxGraphModel dx="2514" dy="929" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -27,7 +27,7 @@
         <mxCell id="IxbcF2EGTxCfE7CKFI7H-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="d10xtDlweWYbyBGK5G75-2" target="d10xtDlweWYbyBGK5G75-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="d10xtDlweWYbyBGK5G75-2" value="Esku Pokemon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="d10xtDlweWYbyBGK5G75-2" value="Prokemon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="10" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="IxbcF2EGTxCfE7CKFI7H-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="IxbcF2EGTxCfE7CKFI7H-1" target="IxbcF2EGTxCfE7CKFI7H-8" edge="1">
@@ -123,6 +123,9 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="bGF5uxhV3qYtsZNJjD4V-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bGF5uxhV3qYtsZNJjD4V-2" target="bGF5uxhV3qYtsZNJjD4V-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bGF5uxhV3qYtsZNJjD4V-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bGF5uxhV3qYtsZNJjD4V-2" target="bGF5uxhV3qYtsZNJjD4V-52">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="bGF5uxhV3qYtsZNJjD4V-2" value="python fájlok" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
@@ -248,6 +251,9 @@
         </mxCell>
         <mxCell id="bGF5uxhV3qYtsZNJjD4V-50" value="Tartalma egy dő után bekerül a classes.py-ba" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="320" y="555" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bGF5uxhV3qYtsZNJjD4V-52" value="&lt;div&gt;story.py&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="440" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
