@@ -1,9 +1,14 @@
 from os import system
 
 def generic_menu(title, options):
-    for i in range(len(options)):
-        for adat in options:
-            print(f'{i} - {adat}')
+    print(title)
+    print("-" * 60)
+    for i in range(10):
+        if i < len(options):
+            print(f"│ {f"{i + 1}. {options[i]}".ljust(56)} │")
+        else:
+            print("│" + " " * 58 + "│")
+    print("-" * 60)
 
 def fomenu():
 
