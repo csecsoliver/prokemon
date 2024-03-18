@@ -9,6 +9,7 @@ A játék az 1. genecrációs pokemon másolata.
 Olio:
  - weboldal: program bemutatása
  - pokedex.py
+ - fájlok elkészítése
 
 MBalint:
  - weboldal: csapat bemutatás
