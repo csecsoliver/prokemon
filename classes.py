@@ -12,28 +12,44 @@ class Pokemon:
         
 
 
-
 osszespokemon: list[Pokemon] = []
-
-def l_f_f(filename):
-    file = open(filename, 'r', encoding='utf8')
-    file.readline()
-    for f in file:
-        osszespokemon.append(Pokemon(f))
-
-l_f_f('pokemon.csv')
-
-
-
-
+type_list: list = []
 type_dict: dict = {}
-Typestat = []
+type_dict2: dict = {}
 
-def typestat(filename):
+
+def load_from_file(filename: str, classname, listname: list):
+    '''Sima file beolvasás három parameterrel: 
+    1. a file neve
+    2. a listbe felvett elemek classa
+    3. lista neve'''
     file = open(filename, 'r', encoding='utf8')
     file.readline()
     for f in file:
-        Typestat.append(f)
+        listname.append(classname(f.strip()))
 
-typestat('type.csv')
-print(Typestat)
+load_from_file('pokemon.csv', Pokemon, osszespokemon)
+
+
+
+
+
+
+
+def types():
+    load_from_file('type.csv', str, type_list)
+    for i, t in enumerate(type_list):
+        splitted = str(t).split(';')
+        typename = splitted[0]
+        typestats = splitted[1:]
+        
+        if typename not in type_dict.keys():
+            if typename not in type_dict2.keys():
+                    type_dict2[str(typename)] = float(typestats[i])
+        type_dict[str(typename)] = type_dict2
+
+
+
+
+types()
+print(type_dict)
