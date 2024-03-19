@@ -1,0 +1,37 @@
+.titel {
+    border-bottom: 3px yellow solid !important;
+    background-color: black !important;
+}
+.szoveg {
+    color: white !important;
+    font-size: 20px !important;
+}
+
+.elsoszoveg {
+    color: white !important;
+    font-size: 20px !important;
+    
+}
+
+body {
+    background-color: black !important;
+}
+.gomb {
+    color: white !important;
+}
+
+
+.cardkepek {
+    height: 200px;
+}
+.card {
+    height: 400px !important;
+    
+    margin: 50px 0;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+
