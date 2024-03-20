@@ -1,37 +1,62 @@
-.titel {
-    border-bottom: 3px yellow solid !important;
+.navbar {
     background-color: black !important;
-}
-.szoveg {
-    color: white !important;
-    font-size: 20px !important;
-}
+    border-bottom: 5px solid yellow !important;
+  }
 
-.elsoszoveg {
-    color: white !important;
-    font-size: 20px !important;
-    
-}
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #ffd700 !important;
+    transition: ease-in-out 0.3s;
+  }
+  .nav-link:hover {
+    color: rgb(134, 127, 65) !important;
+    border: yellow solid 1px;
+    border-top-left-radius: 30px !important;
+    border-bottom-left-radius:30px !important;
+    border-bottom-right-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+    overflow: hidden;
+  }
 
-body {
-    background-color: black !important;
-}
-.gomb {
-    color: white !important;
-}
-
-
-.cardkepek {
-    height: 200px;
-}
-.card {
-    height: 400px !important;
-    
-    margin: 50px 0;
+  /* Card style */
+  .card {
+    border: rgb(46, 46, 46) solid 2px;
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
     border-bottom-right-radius: 20px !important;
     border-top-right-radius: 20px !important;
-}
+    overflow: hidden;
+    transition: ease-in-out 0.3s;
+  }
 
+  .card-body {
+    background-color: #000;
+    color: #ffd700;
+  }
+
+  .card:hover {
+    scale: 105%;
+  }
+
+  .card-title,
+  .card-text {
+    color: #ffd700;
+  }
+
+  .btn-primary {
+    background-color: #ffd700;
+    border-color: #ffd700;
+  }
+
+  .btn-primary:hover {
+    background-color: #c6a600;
+    border-color: #c6a600;
+  }
+  body {
+    background-color: black;
+  }
+
+.linkek {
+  color: red !important;
+}
 

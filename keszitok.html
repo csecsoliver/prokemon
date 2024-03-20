@@ -1,82 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PROKEMON</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="shortcut icon" href="images/shortcuticon.png" type="image/x-icon">
-  </head>
-  <body>
-    <nav class="titel navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/shortcuticon.png" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
-            
-          </a>
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="szoveg nav-link" href="program.html">A programról</a>
-              </li>
-              <li class="nav-item">
-                <a class="szoveg nav-link" href="keszitok.html">A csapat</a>
-              </li>
-              <li class="nav-item">
-                <a class="szoveg nav-link" href="ceg.html">A cégünk</a>
-              </li>
-              
-            </ul>
-           
-          </div>
-        </div>
-      </nav>
-      <!-- navbar vege -->
-      <div class="container">
 
-      <div class="row">
-        <div class="col-lg-4 col-xl-4 col-xxl-3 col-md-6 col-sm-12">
-          <div class="card">
-            <img src="images/typechart.png" class="cardkepek card-img-top" alt="A gorilla">
-            <div class="card-body">
-              <h2></h2>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROKEMON</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/shortcuticon.png" type="image/x-icon">
+</head>
 
-        <div class="col-lg-4 col-xl-4 col-xxl-3 col-md-6 col-sm-12">
-          <div class="card">
-            <img src="images/typechart.png" class="cardkepek card-img-top" alt="A gorilla">
-            <div class="card-body">
-              <h2></h2>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+<body>
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.html">
+    <img src="images/shortcuticon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    PROKEMON
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="program.html">A programról </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="keszitok.html">Készítők <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="ceg.html">A cégünk</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 
-        <div class="col-lg-4 col-xl-4 col-xxl-3 col-md-6 col-sm-12">
-          <div class="card">
-            <img src="images/typechart.png" class="cardkepek card-img-top" alt="A gorilla">
-            <div class="card-body">
-              <h2></h2>
-              <p class="card-text"></p>
-            </div>
+  <!-- Container for cards -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card 1</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
           </div>
         </div>
       </div>
 
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card 2</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+      </div>
 
-      
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card 3</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    
+  </div>
 
-  </body>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>
