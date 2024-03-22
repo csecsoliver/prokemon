@@ -1,6 +1,6 @@
 .navbar {
     background-color: black !important;
-    border-bottom: 5px solid yellow !important;
+    border-bottom: 5px solid #ffd700 !important;
   }
 
   .navbar-brand,
@@ -10,7 +10,7 @@
   }
   .nav-link:hover {
     color: rgb(134, 127, 65) !important;
-    border: yellow solid 1px;
+    border: #ffd700 solid 1px;
     border-top-left-radius: 30px !important;
     border-bottom-left-radius:30px !important;
     border-bottom-right-radius: 30px !important;
@@ -56,7 +56,30 @@
     background-color: black;
   }
 
-.linkek {
-  color: red !important;
+
+
+.form-box {
+  padding: 20px;
+  margin: 10px;
+  
 }
 
+
+.form-control {
+  padding: 20px;
+  text-align: center !important;
+  background-color: black;
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  transition: ease-in-out 0.1s;
+  margin: 10px;
+  
+  border-top-left-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  overflow: hidden;
+}
+.form-control:hover {
+  scale: 105%;
+}
