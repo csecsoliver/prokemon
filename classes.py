@@ -15,7 +15,7 @@ class Pokemon:
 osszespokemon: list[Pokemon] = []
 type_list: list = []
 type_dict: dict = {}
-type_dict2: dict = {}
+
 
 
 def load_from_file(filename: str, classname, listname: list):
@@ -44,12 +44,54 @@ def types():
         typestats = splitted[1:]
         
         if typename not in type_dict.keys():
-            if typename not in type_dict2.keys():
-                    type_dict2[str(typename)] = float(typestats[i])
-        type_dict[str(typename)] = type_dict2
+            type_dict[str(typename)] = typestats
+
+def fordito(type1: str, type2: str) -> int:
+    '''Két parameter:
+
+    type1: támadó pokemon type
+    type2: védekező pokemon type
+
+    lefuttatja a type() függvényt ezáltal beolvassa a pokemonok statjait a type.csv-ből majd visszaadja a támadás szorzóját'''
+    types()
+    for k, v in type_dict.items():
+        if k == type1:
+            return v[type_to_int(type2)-1]
+
+def type_to_int(type: str) -> int:
+    '''Normal;Fire;Water;Electric;Grass;Ice;Fighting;Poison;Ground;Flying;Psychic;Bug;Rock;Ghost;Dragon'''
+    match type:
+        case 'Normal':
+            return 1
+        case 'Fire':
+            return 2
+        case 'Water':
+            return 3
+        case 'Electric':
+            return 4
+        case 'Grass':
+            return 5
+        case 'Ice':
+            return 6
+        case 'Fighting':
+            return 7
+        case 'Poison':
+            return 8
+        case 'Ground':
+            return 9
+        case 'Flying':
+            return 10
+        case 'Psychic':
+            return 11
+        case 'Bug':
+            return 12
+        case 'Rock':
+            return 13
+        case 'Ghost':
+            return 14
+        case 'Dragon':
+            return 15
+        
 
 
-
-
-types()
-print(type_dict)
+print(osszespokemon)
