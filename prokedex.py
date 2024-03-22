@@ -1,14 +1,14 @@
 import menu
 import classes
-from classes2 import clearscreen as clear
-import time
+from classes import clearscreen as clear
+from time import sleep as wait
 
 
 def main(external=True):
     if external == False:
         clear()
         print("Prokemon kódex")
-        time.sleep(0.5)
+        wait(0.5)
         input("Nyomjon meg egy gombot a folytatáshoz...")
         clear()
         mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Prokemonok összehasonlítása", "Új prokemon készítése", "Kilépés"])
@@ -23,7 +23,7 @@ def main(external=True):
         case "1":
             clear()
             print("Prokemonok betöltése...")
-            time.sleep(0.5)
+            wait(0.5)
             clear()
             browse()
         case "2":
@@ -41,11 +41,11 @@ def main(external=True):
             clear()
             if external is not True:
                 print("Kilépés...")
-                time.sleep(0.5)
+                wait(0.5)
             return
         case _:
             print("Nem opció")
-            time.sleep(0.5)
+            wait(0.5)
             main("nope")
         
 
