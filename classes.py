@@ -1,3 +1,6 @@
+import platform
+import os
+
 class Pokemon:
     def __init__(self, row: str) -> None:
         #,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary
@@ -92,6 +95,21 @@ def type_to_int(type: str) -> int:
         case 'Dragon':
             return 15
         
+
+def clearscreen():
+    match platform.system():
+        case "Windows":
+            os.system("cls")
+        case "Linus":
+            print("WTF are you doing?")
+        case "Linux":
+            os.system("clear")
+        case "Darwin":
+            os.system("clear")
+        case "Java":
+            print("Why? Cannot clear the screen.")
+        case _:
+            print("Incompatible system, cannot clear the screen")
 
 
 print(osszespokemon)
