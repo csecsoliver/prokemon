@@ -17,13 +17,23 @@ def wild_fight(player, opponent_types: list):
     print()
     clear()
     print(f"A wild {opponent.name} appeared!")
-
+    wait(3)
+    clear()
+    
 
     pass
 
 def trainer_fight():
     pass
 
-def fight_gui():
-    pass
+def fight_gui(my_pokemon: classes.Pokemon, enemy_name, enemy_pokemon: classes.Pokemon):
+    print(my_pokemon.nickname + " vs ")
+    print("-" * 60)
+    for i in range(10):
+        if i < len(options):
+            print(f"""│ {f"{i + 1}. {options[i]}".ljust(56)} │""")
+        else:
+            print("│" + " " * 58 + "│")
+    print("-" * 60)
+    return input("Válasz: ") 
 
