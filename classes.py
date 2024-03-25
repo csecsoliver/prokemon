@@ -13,7 +13,11 @@ class Pokemon:
         self.defe = spltd[7]
         self.speed = spltd[10]
         
-
+class Player:
+    def __init__(self, name, items: list, pokemons: list) -> None:
+        self.name = name
+        self.items = items
+        self.pokemons = pokemons
 
 osszespokemon: list[Pokemon] = []
 type_list: list = []
@@ -111,5 +115,33 @@ def clearscreen():
         case _:
             print("Incompatible system, cannot clear the screen")
 
+def save(player: Player) -> bool:
+    biztos = None
+    while (biztos != 'i') or (biztos != 'n'):
+        biztos = input('Biztos menteni akarsz? (i/n) ')
 
+    match biztos:
+        case 'n':
+            return
+        case 'i':
+            nameinput = input('Add meg a mentés nevét! ')
+            file = open(nameinput + '.csv', 'w', encoding='utf8')
+            file.write(f'{player.name}\n')
+            for i in player.items:
+                file.write(f'{i}\n')
+            file.write('POKEMONS\n')
+            for p in player.pokemons:
+                file.write(f'{p}\n')
+    saveend = input('A mentés sikeres! Folytatja a játékot? ')
+    match saveend:
+        case 'i':
+            return True
+        case 'n':
+            return False
+        case _:
+            print('Írj már be valami olyat amit kértem légysziiii, ezt akkor egy nemnek veszem csáá')
+            return False
+        
+
+save(None)
 print(osszespokemon)
