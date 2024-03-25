@@ -57,29 +57,60 @@
   }
 
 
+  .kártya {
+    border: 2px #ffd700 solid ;
+    height: 50px;
+    margin: 20px;
+    
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    overflow: hidden;
+    transition: ease-in-out 0.3s;
+  }
 
-.form-box {
-  padding: 20px;
-  margin: 10px;
-  
+  .kártya-body {
+    background-color: #000;
+    color: #ffd700;
+  }
+
+  .kártya:hover {
+    scale: 105%;
+  }
+
+  .kártya-title,
+  .kártya-text {
+    color: #ffd700;
+  }
+  .gomb-link {
+    color: #ffd700;
+    background-color: black;
+    border: none;
+  }
+  .gomb-link:active {
+    border: none;
+  }
+
+  .accordion {
+    border: 2px #ffd700 solid ;
+    margin: 20px;
+    overflow: hidden;
+  }
+
+  .accordion-body {
+    background-color: #000;
+    color: #ffd700;
+  }
+.accordion-header {
+  background-color: #000 !important;
 }
-
-
-.form-control {
-  padding: 20px;
-  text-align: center !important;
-  background-color: black;
-  border: 2px solid #ffd700;
+.accordion-button {
+  background-color: #000;
   color: #ffd700;
-  transition: ease-in-out 0.1s;
-  margin: 10px;
-  
-  border-top-left-radius: 20px !important;
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-  overflow: hidden;
 }
-.form-control:hover {
-  scale: 105%;
-}
+
+  .accordion-title,
+  .accordion-text {
+    color: #ffd700;
+  }
