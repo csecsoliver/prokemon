@@ -106,11 +106,19 @@
   background-color: #000 !important;
 }
 .accordion-button {
-  background-color: #000;
-  color: #ffd700;
+  background-color: #000 !important;
+  color: #ffd700 !important;
 }
 
   .accordion-title,
   .accordion-text {
     color: #ffd700;
+  }
+
+  .accordion-item {
+    border: 1px yellow solid;
+  }
+  .accordion.szoveg {
+    text-align: justify;
+    
   }
