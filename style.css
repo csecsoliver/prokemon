@@ -20,7 +20,7 @@
 
   /* Card style */
   .card {
-    border: rgb(46, 46, 46) solid 2px;
+    border: #ffd700 solid 1px;
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
     border-bottom-right-radius: 20px !important;
@@ -101,6 +101,7 @@
   .accordion-body {
     background-color: #000;
     color: #ffd700;
+    border: 1px solid #ffd700;
   }
 .accordion-header {
   background-color: #000 !important;
@@ -116,9 +117,12 @@
   }
 
   .accordion-item {
-    border: 1px yellow solid;
+    border: 1px #ffd700 solid;
   }
   .accordion.szoveg {
     text-align: justify;
     
+  }
+  .kartya-img {
+    height: 400px;
   }
