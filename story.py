@@ -1,3 +1,10 @@
+import classes
+import classes2
+import random
+import fight as f
+
+
+
 '''
 PLSSSSS EGY KIS VISSZAJELZÉS HOGY MEGFELEL E
 
@@ -36,3 +43,16 @@ Bossok pokemonjai 25-tel több hp-val és a többi statból 5-tel többel kezden
     - Volt segítő pokemonjai:
         - Charizard, Mewtwo, Articuno
 '''
+
+
+def puszta(type1, type2, type3, type4, type5):
+    typeslist: list = [type1, type2, type3, type4, type5]
+    print('Megérkeztél egy puszta területre')
+    chanse = random.randint(0, 2)
+    match chanse:
+        case 1:
+            f.wild_fight('player', typeslist)
+    
+
+
+puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
