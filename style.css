@@ -107,8 +107,12 @@
   background-color: #000 !important;
 }
 .accordion-button {
+  background-color: #ffd700 !important;
+  
+}
+.accordion-button.collapsed {
   background-color: #000 !important;
-  color: #ffd700 !important;
+  color: #ffd700;
 }
 
   .accordion-title,
@@ -126,3 +130,34 @@
   .kartya-img {
     height: 400px;
   }
+
+.focimek {
+  color: #ffd700;
+  font-size: 35px;
+}
+
+.kiscimek {
+  color: #ffd700;
+  font-size: 20px;
+}
+
+.lista {
+  color: #ffd700;
+}
+.ceglogo {
+  width: 50%;
+}
+.letoltes {
+  color: #ffd700;
+  text-decoration: none;
+}
+.letoltes:visited {
+  color: #ffd700;
+}
+.letoltes:active{
+  color: #ffd700;
+}
+
+.letoltes:hover {
+  color: rgb(134, 127, 65);
+}
