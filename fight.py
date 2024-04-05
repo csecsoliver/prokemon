@@ -1,6 +1,6 @@
 import menu
 import classes
-import classes2
+import classes2 as classes
 from classes import clearscreen as clear
 import random
 from time import sleep as wait
@@ -143,7 +143,11 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-20, -5))
             case "4":
-                pass
+                classes.pick_item(player, 0)
+                
+                
+                
+                
             case "5":
                 pass
             case "6":
@@ -158,7 +162,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
 def trainer_fight():
     pass
 
-def fight_gui(my_pokemon: classes2.Player_pokemon, enemy_name, enemy_pokemon: classes.Pokemon, opponent_health: int, what_happened: str = None):
+def fight_gui(my_pokemon: classes.Player_pokemon, enemy_name, enemy_pokemon: classes.Pokemon, opponent_health: int, what_happened: str = None):
     print(my_pokemon.nickname + " vs " + enemy_pokemon.name)
     print("-" * 60)
     options = ["",f"Ellenség, {enemy_name} életpontjai: {opponent_health} / {enemy_pokemon.health}", f"{my_pokemon.nickname} életpontjai: {my_pokemon.health} / {my_pokemon.pokemon.health}", "1. Támadás","2. Várakozás", "3. Védekezés", "4. Tárgy használata", "5. Prokemon csere", "6. Menekülés"]
