@@ -20,7 +20,7 @@
 
   /* Card style */
   .card {
-    border: rgb(46, 46, 46) solid 2px;
+    border: #ffd700 solid 1px;
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
     border-bottom-right-radius: 20px !important;
@@ -101,13 +101,18 @@
   .accordion-body {
     background-color: #000;
     color: #ffd700;
+    border: 1px solid #ffd700;
   }
 .accordion-header {
   background-color: #000 !important;
 }
 .accordion-button {
+  background-color: #ffd700 !important;
+  
+}
+.accordion-button.collapsed {
   background-color: #000 !important;
-  color: #ffd700 !important;
+  color: #ffd700;
 }
 
   .accordion-title,
@@ -116,9 +121,43 @@
   }
 
   .accordion-item {
-    border: 1px yellow solid;
+    border: 1px #ffd700 solid;
   }
   .accordion.szoveg {
     text-align: justify;
     
   }
+  .kartya-img {
+    height: 400px;
+  }
+
+.focimek {
+  color: #ffd700;
+  font-size: 35px;
+}
+
+.kiscimek {
+  color: #ffd700;
+  font-size: 20px;
+}
+
+.lista {
+  color: #ffd700;
+}
+.ceglogo {
+  width: 50%;
+}
+.letoltes {
+  color: #ffd700;
+  text-decoration: none;
+}
+.letoltes:visited {
+  color: #ffd700;
+}
+.letoltes:active{
+  color: #ffd700;
+}
+
+.letoltes:hover {
+  color: rgb(134, 127, 65);
+}

@@ -68,11 +68,14 @@ def browse(num_of_first = 0):
                 if int(choice) in [3,4,5,6,7,8,9]:
                     view_prokemon(num_of_first + (int(choice)-3))
 
-
-
-
-
-
+def view_prokemon(num):
+    prokemon = classes.osszespokemon[num]
+    clear()
+    choice = menu.generic_menu(prokemon.name, [f"Típusa: {prokemon.type1} {prokemon.type2}", f"Életpontok: {prokemon.hp}", f"Támadás: {prokemon.atk}", f"Védekezés: {prokemon.defe}", f"Sebessége: {prokemon.speed}", f"vissza"]) 
+    if choice == "5":
+        return
+    else: 
+        view_prokemon(num)
 
 if __name__ == "__main__":
     main(False)
