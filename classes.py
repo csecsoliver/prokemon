@@ -8,10 +8,10 @@ class Pokemon:
         self.name = spltd[1]
         self.type1 = spltd[2]
         self.type2 = spltd[3]
-        self.hp = spltd[5]
-        self.atk = spltd[6]
-        self.defe = spltd[7]
-        self.speed = spltd[10]
+        self.hp = int(spltd[5])
+        self.atk = int(spltd[6])
+        self.defe = int(spltd[7])
+        self.speed = int(spltd[10])
         
 class Player:
     def __init__(self, name, items: list, pokemons: list) -> None:
@@ -63,7 +63,7 @@ def fordito(type1: str, type2: str) -> int:
     types()
     for k, v in type_dict.items():
         if k == type1:
-            return v[type_to_int(type2)-1]
+            return float(v[type_to_int(type2)-1])
 
 def type_to_int(type: str) -> int:
     '''Normal;Fire;Water;Electric;Grass;Ice;Fighting;Poison;Ground;Flying;Psychic;Bug;Rock;Ghost;Dragon'''
@@ -117,7 +117,7 @@ def clearscreen():
 
 def save(player: Player) -> bool:
     biztos = None
-    while (biztos != 'i') or (biztos != 'n'):
+    while (biztos != 'i') and (biztos != 'n'):
         biztos = input('Biztos menteni akarsz? (i/n) ')
 
     match biztos:
@@ -143,5 +143,5 @@ def save(player: Player) -> bool:
             return False
         
 
-save(None)
-print(osszespokemon)
+# save(None)
+# print(osszespokemon)
