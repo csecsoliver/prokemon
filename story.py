@@ -3,7 +3,7 @@ import classes2
 import random
 from fight import *
 from time import sleep as wait
-
+from os import system
 
 
 '''
@@ -46,86 +46,112 @@ Bossok pokemonjai 25-tel több hp-val és a többi statból 5-tel többel kezden
 '''
 
 
-def puszta(type1, type2, type3, type4, type5):
-    typeslist: list = [type1, type2, type3, type4, type5]
+def puszta(player, typeslist):
     print('Megérkeztél egy puszta területre')
     wait(2)
-    wild_fight('player', typeslist)
+    wild_fight(player, typeslist)
     
 
 def grassy_biom(player):
+    typeslist = ['Normal', 'Grass', 'Water', 'Ground', 'Poison']
+    aaron_pokemons = ['Bulbasaur', 'Pidgey', 'Psyduck']
     print('(story)')
     input('Tovább...')
-    puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+    puszta(player, typeslist)
     print('(story szöveg)')
     input('Tovább...')
-    puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+    puszta(player, typeslist)
     print('story')
     while True:
         input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
-            puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+            puszta(player, typeslist)
             pass
         else: 
             break
 
-    trainer_fight()
+    trainer_fight(player, 'Aaron', aaron_pokemons)
     print('story')
 
 
 def cloud_biom(player):
+    typeslist = ['Electric', 'Ice', 'Flying', 'Bug']
+    lyra_pokemons = ['Raichu', 'Scyther', 'Zubat']
     print('(story)')
     input('Tovább...')
-    puszta('Electric', 'Ice', 'Flying', 'Bug')
+    puszta(player, typeslist)
     print('(story szöveg)')
     input('Tovább...')
-    puszta('Electric', 'Ice', 'Flying', 'Bug')
+    puszta(player, typeslist)
     print('story')
     while True:
         input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
-            puszta('Electric', 'Ice', 'Flying', 'Bug')
+            puszta(player, typeslist)
             pass
         else: 
             break
 
-    trainer_fight()
+    trainer_fight(player, 'Lyra', lyra_pokemons)
     print('story')
 
 def mountain_biom(player):
+    typeslist = ['Rock', 'Fighting']
+    dawn_pokemons = ['Aerodactyl', 'Kabuto', 'Mankey']
     print('(story)')
     input('Tovább...')
-    puszta('Rock', 'Fighting')
+    puszta(player, typeslist)
     print('(story szöveg)')
     input('Tovább...')
-    puszta('Rock', 'Fighting')
+    puszta(player, typeslist)
     print('story')
     while True:
         input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
-            puszta('Rock', 'Fighting')
+            puszta(player, typeslist)
             pass
         else: 
             break
 
-    trainer_fight()
+    trainer_fight(player, 'Dawn', dawn_pokemons)
     print('story')
 
 def underworld_biom(player):
+    typeslist = ['Fire', 'Psychic', 'Ghost', 'Dragon']
+    whitney_pokemons = ['Arcanine', 'Dratini', 'Charmander']
     print('(story)')
     input('Tovább...')
-    puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+    puszta(player, typeslist)
     print('(story szöveg)')
     input('Tovább...')
-    puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+    puszta(player, typeslist)
     print('story')
     while True:
         input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
-            puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+            puszta(player, typeslist)
             pass
         else: 
             break
 
-    trainer_fight()
-    print('story')
+    trainer_fight(player, 'Whitney', whitney_pokemons)
+    print('Max: Legyőzted Whitney-t el se hiszem! Ő volt az utolsó nagyhatalmú pokemon mester! Már csak Gloria választ el a célunktól.')
+    wait('5')
+    system('cls')
+
+def boss_biom(player):
+    max_pokemons = ['Charizard', 'Mewtwo', 'Articuno']
+    gloria_pokemons = ['Dragonite', 'Charmeleon', 'Ivysaur']
+    system('cls')
+    print('Max: Végre elérkeztünk ide és le tudjuk győzni Gloria-t és megakadályozhatjuk hogy övé legyen a hatalom!')
+    wait('5')
+    system('cls')
+    print('Gloria: Már régóta vártalak kölyök! Már csak téged kell eltakarítanom az utamból! Állj ki ellenem és küzdjünk meg a hatalomért!')
+    input('Harc...')
+    system('cls')
+    trainer_fight(player, 'Gloria', gloria_pokemons)
+    system('cls')
+    print('Max: Én.. Én nem hiszem el hogy tényleg legyőzted nekem Gloria-t! Hát ez hihetetlen most pedig enyém a világ végre!!!')
+    wait('5')
+    system('cls')
+    trainer_fight(player, 'Max', max_pokemons)
