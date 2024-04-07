@@ -86,7 +86,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                     opponent_health -= damage
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(12, 26))
-                pas = False
+                passs = False
                 
             case "2":
                 message = "Várakozol, eközben az ellenfél támad: "
@@ -118,7 +118,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-40, -17))
                 
-                pas = True
+                passs = True
             case "3":
                 message = "Védekező pozíciót veszel föl, eközben az ellenfél támad: "
                 
@@ -149,7 +149,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-20, -5))
                 
-                pas = True
+                passs = True
             case "4":
                 message = player.pokemons[selected_pokemon].pick_item(player, 0)
                 
@@ -163,7 +163,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 else:
                     selected_pokemon = picked_pokemon
                     message = f"{player.pokemons[selected_pokemon].nickname}-t választottad!"
-                pas = True
+                passs = True
             case "6":
                 chance = random.randint(0, 2)
                 if chance != 0:
@@ -174,7 +174,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                     clear()
                     return False
             case _:
-                pas = True
+                passs = True
         
         if opponent_health <= 0:
             ongoing = False
@@ -207,7 +207,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 
             
         
-        if pas == False:
+        if passs == False:
             fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
             message = "Az ellenfél támad: "
                 
@@ -238,8 +238,239 @@ def wild_fight(player: classes.Player, opponent_types: list):
 
 
 
-def trainer_fight():
-    pass
+def trainer_fight(player, trainer_name, trainer_pokemons: list):
+    
+    clear()
+    print(f"{trainer_name} kihív egy párbajra!")
+    wait(3)
+    clear()
+    opponent = trainer_pokemons[0]
+    opponent_health = opponent.hp
+    ongoing = True
+    message = None
+    selected_pokemon = 0
+        
+    
+    
+    while ongoing:
+        clear()
+        return_value = fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
+        
+        
+        match return_value:
+            case "1":
+                effectiveness = (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type1))
+                if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type2))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type2))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type1))
+                    effectiveness = round(effectiveness, 2)
+                
+                effectiveness *= random.uniform(0.85, 1.15)
+                
+                damage = round(player.pokemons[selected_pokemon].pokemon.atk * effectiveness * 0.3)
+                if effectiveness == 0:
+                    message = "Nem hatásos"
+                if effectiveness > 2:
+                    message = "Nagyon hatásos!"
+                if effectiveness < 1:
+                    message = "Nem nagyon hatásos"
+                if effectiveness == 1:
+                    message = "Sikeres támadás"
+                
+                if opponent.speed > player.pokemons[selected_pokemon].pokemon.speed and random.randint(0, 3) == 0:
+                    message = "Az ellenfél gyorsabb, ezért ő támad először: "
+                    
+                    effectiveness = (classes.fordito( opponent.type1, player.pokemons[selected_pokemon].pokemon.type1))
+                    if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
+                        effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
+                        effectiveness = round(effectiveness, 2)
+                    elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                        effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                        effectiveness = round(effectiveness, 2)
+                    elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                        effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                        effectiveness = round(effectiveness, 2)
+                    
+                    effectiveness *= random.uniform(0.85, 1.15)
+                    
+                    if effectiveness == 0:
+                        message += "Nem hatásos"
+                    if effectiveness > 1:
+                        message += "Nagyon hatásos!"
+                    if effectiveness < 1:
+                        message += "Nem nagyon hatásos"
+                    if effectiveness == 1:
+                        message += "Sikeres támadás"
+                    
+                    damage = round(opponent.atk * effectiveness * 0.3)
+                    player.pokemons[selected_pokemon].damage(damage)
+                    
+                else:
+                    opponent_health -= damage
+                
+                player.pokemons[selected_pokemon].use_energy(random.randint(12, 26))
+                passs = False
+                
+            case "2":
+                message = "Várakozol, eközben az ellenfél támad: "
+                
+                effectiveness = (classes.fordito( opponent.type1, player.pokemons[selected_pokemon].pokemon.type1))
+                if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                    effectiveness = round(effectiveness, 2)
+                
+                effectiveness *= random.uniform(0.85, 1.15)
+                
+                if effectiveness == 0:
+                    message += "Nem hatásos"
+                if effectiveness > 1:
+                    message += "Nagyon hatásos!"
+                if effectiveness < 1:
+                    message += "Nem nagyon hatásos"
+                if effectiveness == 1:
+                    message += "Sikeres támadás"
+                
+                damage = round(opponent.atk * effectiveness * 0.3)
+                player.pokemons[selected_pokemon].damage(damage)
+                
+                player.pokemons[selected_pokemon].use_energy(random.randint(-40, -17))
+                
+                passs = True
+            case "3":
+                message = "Védekező pozíciót veszel föl, eközben az ellenfél támad: "
+                
+                effectiveness = classes.fordito( opponent.type1, player.pokemons[selected_pokemon].pokemon.type1)
+                if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                    effectiveness = round(effectiveness, 2)
+                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                    effectiveness = round(effectiveness, 2)
+                
+                effectiveness *= random.uniform(0.85, 1.15)
+                effectiveness *= random.uniform(0, 0.4)
+                if effectiveness < 0.3:
+                    message += "Sikesesen kivédted"
+                if effectiveness > 1:
+                    message += "Nagyon hatásos!"
+                if effectiveness < 1:
+                    message += "Nem nagyon hatásos"
+                if effectiveness == 1:
+                    message += "Sikeres támadás"
+                
+                damage = round(opponent.atk * effectiveness * 0.3)
+                player.pokemons[selected_pokemon].damage(damage)
+                
+                player.pokemons[selected_pokemon].use_energy(random.randint(-20, -5))
+                
+                passs = True
+            case "4":
+                message = player.pokemons[selected_pokemon].pick_item(player, 0)
+                
+                
+                
+                
+            case "5":
+                picked_pokemon = classes2.pick_pokemon(player, 0)
+                if picked_pokemon == None:
+                    pass
+                else:
+                    selected_pokemon = picked_pokemon
+                    message = f"{player.pokemons[selected_pokemon].nickname}-t választottad!"
+                passs = True
+            case "6":
+                clear()
+                print("Ez itt nem lehetséges!")
+                wait(3)
+                clear()
+                passs = True
+            case _:
+                passs = True
+        
+        if opponent_health <= 0:
+            fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
+            print(f"{player.pokemons[selected_pokemon].nickname} legyőzte {opponent.name}-t!")
+            wait(3)
+            clear()
+            if trainer_pokemons.index(opponent) < len(trainer_pokemons) - 1:
+                opponent = trainer_pokemons[trainer_pokemons.index(opponent) + 1]
+                opponent_health = opponent.hp
+                clear()
+                message = f"{trainer_name} beküldi {opponent.name}-t!"
+                wait(3)
+                clear()
+            else:
+                ongoing = False
+                
+                opponent_health = 0
+                clear()
+                fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
+                player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
+                clear()
+                return True
+        
+        if player.pokemons[selected_pokemon].health <= 0:
+            
+            clear()
+            print(f"{player.pokemons[selected_pokemon].nickname} harcképtelenné vált!")
+            wait(3)
+            clear()
+            picked_successfully = False
+            while picked_successfully == False:
+                picked_pokemon = classes2.pick_pokemon(player, 0)
+                if picked_pokemon == None:
+                    pass
+                else:
+                    selected_pokemon = picked_pokemon
+                    if player.pokemons[selected_pokemon].health > 0:
+                        message = f"{player.pokemons[selected_pokemon].nickname}-t választottad!"
+                        picked_successfully = True
+                
+            
+        
+        if passs == False:
+            fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
+            message = "Az ellenfél támad: "
+                
+            effectiveness = (classes.fordito( opponent.type1, player.pokemons[selected_pokemon].pokemon.type1))
+            if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
+                effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
+                effectiveness = round(effectiveness, 2)
+            elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                effectiveness = round(effectiveness, 2)
+            elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                effectiveness = round(effectiveness, 2)
+            
+            effectiveness *= random.uniform(0.85, 1.15)
+            
+            if effectiveness == 0:
+                message += "Nem hatásos"
+            if effectiveness > 1:
+                message += "Nagyon hatásos!"
+            if effectiveness < 1:
+                message += "Nem nagyon hatásos"
+            if effectiveness == 1:
+                message += "Sikeres támadás"
+            
+            damage = round(opponent.atk * effectiveness * 0.3)
+            player.pokemons[selected_pokemon].damage(damage)
+
 
 def fight_gui(my_pokemon: classes2.Player_pokemon, enemy_name, enemy_pokemon: classes.Pokemon, opponent_health: int, what_happened: str = None):
     print(my_pokemon.nickname + " vs " + enemy_pokemon.name)
