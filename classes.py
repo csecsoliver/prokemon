@@ -1,5 +1,6 @@
 import platform
 import os
+import classes2
 
 class Pokemon:
     def __init__(self, row: str) -> None:
@@ -115,23 +116,20 @@ def clearscreen():
         case _:
             print("Incompatible system, cannot clear the screen")
 
-def save(player: Player) -> bool:
-    biztos = None
-    while (biztos != 'i') and (biztos != 'n'):
-        biztos = input('Biztos menteni akarsz? (i/n) ')
+#player_pokemons = [("Pikachu", osszespokemon[25], 100, 100), ("Charmander", osszespokemon[4], 100, 100), ("Squirtle", osszespokemon[7], 100, 100)]
+#player = Player("Péter",'', player_pokemons)
+    
 
-    match biztos:
-        case 'n':
-            return
-        case 'i':
-            nameinput = input('Add meg a mentés nevét! ')
-            file = open(nameinput + '.csv', 'w', encoding='utf8')
-            file.write(f'{player.name}\n')
-            for i in player.items:
-                file.write(f'{i}\n')
-            file.write('POKEMONS\n')
-            for p in player.pokemons:
-                file.write(f'{p}\n')
+def save(player: Player) -> bool:
+    
+    nameinput = input('Add meg a mentés nevét! ')
+    file = open(nameinput + '.csv', 'w', encoding='utf8')
+    file.write(f'{player.name}\n')
+    for i in player.items:
+         file.write(f'{i}\n')
+    file.write('POKEMONS\n')
+    for p in player.pokemons:
+        file.write(f'{p}\n')
     saveend = input('A mentés sikeres! Folytatja a játékot? ')
     match saveend:
         case 'i':
@@ -143,5 +141,5 @@ def save(player: Player) -> bool:
             return False
         
 
-# save(None)
+#save(player)
 # print(osszespokemon)

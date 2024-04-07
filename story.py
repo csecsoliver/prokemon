@@ -55,15 +55,15 @@ def puszta(player, typeslist):
 def grassy_biom(player):
     typeslist = ['Normal', 'Grass', 'Water', 'Ground', 'Poison']
     aaron_pokemons = ['Bulbasaur', 'Pidgey', 'Psyduck']
-    print('(story)')
+    print(f'Max: Üdvözöllek {player.name}! Szükségem lenne a segítségedre mert Gloria át akarja venni az uralmat az összes pokemon felett és ezt nem hagyhatjuk!\n Látom benned a potenciált ott is van egy füves puszta el is kezdhetsz gyakorolni és pokemonokat szerezni!')
     input('Tovább...')
     puszta(player, typeslist)
-    print('(story szöveg)')
+    print('Max: Ez egész ügyes volt de mielőtt találkozol az elő igazi ellenfeleddel rádfér mégegy kör!')
     input('Tovább...')
     puszta(player, typeslist)
     print('story')
     while True:
-        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
@@ -77,15 +77,15 @@ def grassy_biom(player):
 def cloud_biom(player):
     typeslist = ['Electric', 'Ice', 'Flying', 'Bug']
     lyra_pokemons = ['Raichu', 'Scyther', 'Zubat']
-    print('(story)')
+    print('MAx: Ooo igen a felhős vidék, gondolom érzed ezt a csodás friss levegőt! Tökéletes idő új pokeonok befogására!')
     input('Tovább...')
     puszta(player, typeslist)
-    print('(story szöveg)')
+    print('Max: Igen itt már újabb fajta pokemonok találhatók úgyhogy csak óvatosan az ellenfeleiddel!')
     input('Tovább...')
     puszta(player, typeslist)
-    print('story')
+    print('Max: Már csak Lyra nagymestert kell legyőzni de vigyzz vele mert Electic és Flying típusokat is használ!')
     while True:
-        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
@@ -93,20 +93,20 @@ def cloud_biom(player):
             break
 
     trainer_fight(player, 'Lyra', lyra_pokemons)
-    print('story')
+    print('Max: Legyőzted! Büszke vagyok! Gyorsan nincs több vesztegetni való időnk')
 
 def mountain_biom(player):
     typeslist = ['Rock', 'Fighting']
     dawn_pokemons = ['Aerodactyl', 'Kabuto', 'Mankey']
-    print('(story)')
+    print('Max: Utálom a hegyvidéket! És ezzel együtt itt található a legkevesebb pokemon. Na mindegy túl kell esnünk rajta mert az összes mestert le kell győznünk.')
     input('Tovább...')
     puszta(player, typeslist)
-    print('(story szöveg)')
+    print('Max: Akármennyire is nem szeretem ezt a területet meglehetősen erősek itt a pokemonok szóval próbálj minél többet szerezni!')
     input('Tovább...')
     puszta(player, typeslist)
     print('story')
     while True:
-        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
