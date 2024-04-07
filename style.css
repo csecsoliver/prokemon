@@ -161,3 +161,7 @@
 .letoltes:hover {
   color: rgb(134, 127, 65);
 }
+.group {
+  border-right: 1px solid #ffd700;
+  border-left: 1px solid #ffd700;
+}
