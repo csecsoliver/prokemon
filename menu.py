@@ -1,11 +1,13 @@
 from os import system
 import time
+from classes import clearscreen as clear
 
 def generic_menu(title, options):
     """
     kap egy címet és egy listát, a listában vannak a választási lehetőségek
     ellenőrzés és formázás nélkül adja vissza a felhasználó válaszát
     """
+    clear()
     print(title)
     print("-" * 60)
     for i in range(10):
@@ -17,39 +19,20 @@ def generic_menu(title, options):
     return input("Válasz: ") 
 
 def title_screen():
-    system("cls")
+    clear()
     print("PROKEMON, eskü pokemon")
     print("-" * 60)
     print(f"| 1 - Játék indítása" + " "* 39 + "|")
-    print(f"| 2 - Inventory megnyitása" + " "*33 + "|")
-    print(f"| 3 - Prokedex megnyitása" + " "*33 + "|")
-    print(f"| 0 - Kilépés" + " "*46 + "|")
+    print(f"| 2 - Prokedex megnyitása" + " "*34 + "|")
+    print(f"| 3 - Kilépés" + " "*46 + "|")
     print("-" * 60)
     try:
-        answer = int(input(f"Válasz: "))
+        answer = int(input(f"Válassz: "))
     except:
         print("Nem opció.")
-        time.sleep(0.5)
-        title_screen()
-    system("cls")
-    match answer:
-        case 0:
-            exit()
-        case 1:
-            print("Játék indítása...")
-            time.sleep(0.5)
-            system("cls")
-            print("Map betöltése...")
-            time.sleep(0.5)
-            system("cls")
-            print("Karakter előkészítése...")
-            time.sleep(0.5)
-            system("cls")
-            print("Inventory betöltése...")
-            time.sleep(0.5)
-        case 2:
-            print("Inventory megnyitása...")
-            time.sleep(0.5)
-        case 3:
-            print("Betöltés...")
-            time.sleep(0.5)
+        time.sleep(1)
+        answer = title_screen()
+        
+    return str(answer)
+    
+    
