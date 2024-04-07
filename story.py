@@ -1,7 +1,8 @@
 import classes
 import classes2
 import random
-import fight as f
+from fight import *
+from time import sleep as wait
 
 
 
@@ -48,11 +49,83 @@ Bossok pokemonjai 25-tel több hp-val és a többi statból 5-tel többel kezden
 def puszta(type1, type2, type3, type4, type5):
     typeslist: list = [type1, type2, type3, type4, type5]
     print('Megérkeztél egy puszta területre')
-    chanse = random.randint(0, 2)
-    match chanse:
-        case 1:
-            f.wild_fight('player', typeslist)
+    wait(2)
+    wild_fight('player', typeslist)
     
 
+def grassy_biom(player):
+    print('(story)')
+    input('Tovább...')
+    puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+    print('(story szöveg)')
+    input('Tovább...')
+    puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+    print('story')
+    while True:
+        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        if input_ == 'i':
+            puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+            pass
+        else: 
+            break
 
-puszta('Normal', 'Grass', 'Water', 'Ground', 'Poison')
+    trainer_fight()
+    print('story')
+
+
+def cloud_biom(player):
+    print('(story)')
+    input('Tovább...')
+    puszta('Electric', 'Ice', 'Flying', 'Bug')
+    print('(story szöveg)')
+    input('Tovább...')
+    puszta('Electric', 'Ice', 'Flying', 'Bug')
+    print('story')
+    while True:
+        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        if input_ == 'i':
+            puszta('Electric', 'Ice', 'Flying', 'Bug')
+            pass
+        else: 
+            break
+
+    trainer_fight()
+    print('story')
+
+def mountain_biom(player):
+    print('(story)')
+    input('Tovább...')
+    puszta('Rock', 'Fighting')
+    print('(story szöveg)')
+    input('Tovább...')
+    puszta('Rock', 'Fighting')
+    print('story')
+    while True:
+        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        if input_ == 'i':
+            puszta('Rock', 'Fighting')
+            pass
+        else: 
+            break
+
+    trainer_fight()
+    print('story')
+
+def underworld_biom(player):
+    print('(story)')
+    input('Tovább...')
+    puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+    print('(story szöveg)')
+    input('Tovább...')
+    puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+    print('story')
+    while True:
+        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        if input_ == 'i':
+            puszta('Fire', 'Psychic', 'Ghost', 'Dragon')
+            pass
+        else: 
+            break
+
+    trainer_fight()
+    print('story')
