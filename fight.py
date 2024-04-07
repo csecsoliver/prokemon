@@ -26,6 +26,17 @@ def wild_fight(player: classes.Player, opponent_types: list):
     selected_pokemon = 0
     while ongoing:
         clear()
+        clear()
+        fainted_pokemon = 0
+        for i in player.pokemons:
+            if i.health <= 0:
+                fainted_pokemon += 1
+        if fainted_pokemon == len(player.pokemons):
+            clear()
+            print("Minden pokémonod harcképtelen!")
+            wait(3)
+            clear()
+            return player
         return_value = fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
         
         
@@ -271,6 +282,16 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
     
     while ongoing:
         clear()
+        fainted_pokemon = 0
+        for i in player.pokemons:
+            if i.health <= 0:
+                fainted_pokemon += 1
+        if fainted_pokemon == len(player.pokemons):
+            clear()
+            print("Legyőzött az ellenfeled!")
+            wait(3)
+            clear()
+            return player
         return_value = fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
         
         
