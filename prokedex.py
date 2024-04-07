@@ -1,5 +1,6 @@
 import menu
 import classes
+import classes2
 from classes import clearscreen as clear
 from time import sleep as wait
 
@@ -11,13 +12,13 @@ def main(external=True):
         wait(0.5)
         input("Nyomjon meg egy gombot a folytatáshoz...")
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Prokemonok összehasonlítása", "Új prokemon készítése", "Kilépés"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Kilépés"])
     elif external is True:
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Prokemonok összehasonlítása", "Új prokemon készítése", "Vissza a főmenübe"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Vissza a főmenübe"])
     elif external == "nope":
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Prokemonok összehasonlítása", "Új prokemon készítése", "Kilépés"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Kilépés"])
     
     match mode:
         case "1":
@@ -31,11 +32,8 @@ def main(external=True):
             search()
         case "3":
             clear()
-            compare()
-        case "4":
-            clear()
             create()
-        case "5":
+        case "4":
             return
         case "0":
             clear()
@@ -46,27 +44,41 @@ def main(external=True):
         case _:
             print("Nem opció")
             wait(0.5)
-            main("nope")
+    main("nope")
         
 
-def browse(num_of_first = 0, to_browse=classes.osszespokemon):
+def browse(num_of_first = 0, to_browse=classes.osszespokemon, title="Összes prokemon"):
     clear()
-    choice = menu.generic_menu("Összes pokemon", ["Vissza","Fel", to_browse[num_of_first + 0].name, to_browse[num_of_first + 1].name, to_browse[num_of_first + 2].name, to_browse[num_of_first + 3].name, to_browse[num_of_first + 4].name, to_browse[num_of_first + 5].name, to_browse[num_of_first + 6].name, "Tovább"])
+    
+    if num_of_first <0: num_of_first = 0
+    if num_of_first > len(to_browse):
+        num_of_first = len(to_browse)
+    to_browse_filtered = []
+    for i in range(7):
+        if len(to_browse) > num_of_first + i:
+            to_browse_filtered.append(to_browse[num_of_first + i])
+        else:
+            to_browse_filtered.append(classes2.Item([0, "", 0, 0, 0, 0, 0]))
+    choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[num_of_first + 0].name, to_browse_filtered[num_of_first + 1].name, to_browse_filtered[num_of_first + 2].name, to_browse_filtered[num_of_first + 3].name, to_browse_filtered[num_of_first + 4].name, to_browse_filtered[num_of_first + 5].name, to_browse_filtered[num_of_first + 6].name, "Tovább"])
+    
     match choice:
         case "1":
             return True
         case "2":
-            back = browse(num_of_first - 5)
+            back = browse(num_of_first - 5, to_browse, title)
             if back == True:
                 return True
         case "10":
-            back = browse(num_of_first + 5)
+            back = browse(num_of_first + 5, to_browse, title)
             if back == True:
                 return True
         case _:
             if choice.isnumeric():
                 if int(choice) in [3,4,5,6,7,8,9]:
+                    if type(to_browse_filtered[int(choice)-3]) == classes2.Item:
+                        browse(num_of_first, to_browse, title)
                     view_prokemon(num_of_first + (int(choice)-3))
+
 
 def view_prokemon(num):
     prokemon = classes.osszespokemon[num]
@@ -107,7 +119,6 @@ def view_prokemon(num):
             view_prokemon(num)
 
 
-
 def search():
     clear()
     query = input("Keresés: ")
@@ -115,14 +126,80 @@ def search():
     for i, p in enumerate(classes.osszespokemon):
         if query.lower() in p.name.lower():
             results.append(p)
+            
+    if query == "":
+        return
     if len(results) == 0:
         print("Nincs találat")
         wait(1)
         search()
     else:
-        browse(0, results)
-    wait(1)
+        browse(0, results, "Keresési eredmények")
+    
     search()
+    
+
+def create():
+    clear()
+    name = input("Prokemon neve: ")
+    
+    while True:
+        type1 = input("Típus 1: ")
+        if type1 not in classes.type_list:
+            print("Nem létező típus")
+            wait(1)
+        else:
+            break
+    while True:
+        type2 = input("Típus 2: ")
+        if type2 not in classes.type_list:
+            print("Nem létező típus")
+            wait(1)
+        else:
+            break
+    
+    while True:
+        hp = input("Életpontok: ")
+        if hp.isnumeric() == False:
+            print("Csak számot adjon meg!")
+            wait(1)
+        else:
+            hp = int(hp)
+            break
+    while True:
+        atk = input("Támadás: ")
+        if atk.isnumeric() == False:
+            print("Csak számot adjon meg!")
+            wait(1)
+        else:
+            atk = int(atk)
+            break
+    while True:
+        defe = input("Védekezés: ")
+        if defe.isnumeric() == False:
+            print("Csak számot adjon meg!")
+            wait(1)
+        else:
+            defe = int(defe)
+            break
+    while True:
+        speed = input("Sebesség: ")
+        if speed.isnumeric() == False:
+            print("Csak számot adjon meg!")
+            wait(1)
+        else:
+            speed = int(speed)
+            break
+    
+    new = classes.Pokemon(f"0,{name},{type1},{type2},0,{hp},{atk},{defe},0,0,{speed},0,0")
+    classes.osszespokemon.append(new)
+    print("Prokemon létrehozása...")
+    wait(2)
+    print("Prokemon létrehozva!")
+    wait(1)
+    file = open("pokemon.csv", "a", encoding="utf8")
+    file.write(f"{len(classes.osszespokemon)},{name},{type1},{type2},{hp+atk+defe+speed},{hp},{atk},{defe},0,0,{speed},1,False\n")
+    
 
 if __name__ == "__main__":
     main(False)
