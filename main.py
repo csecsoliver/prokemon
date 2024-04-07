@@ -4,6 +4,8 @@ import menu
 from classes import clearscreen as clear
 from time import sleep as wait
 import prokedex
+from story import *
+from bulbasaur import bulbasaur_image as b
 
 def main():
     clear()
@@ -54,6 +56,19 @@ def game():
         wait(1)
         clear()
         print("A prokedex elindítható a főmenüből, vagy a külön fájllal is.")
+
+        wait(2)
+        grassy_biom(player)
+        ingamemenu(player)
+        cloud_biom(player)
+        ingamemenu(player)
+        mountain_biom(player)
+        ingamemenu(player)
+        underworld_biom(player)
+        ingamemenu(player)
+        boss_biom(player)
+        print('Gratulálok sikeresen végigjátszottad a játékot!')
+        b()
         
             
 def new_game():
@@ -61,7 +76,32 @@ def new_game():
     name = input("Add meg a neved: ")
     return classes2.Player(name, [], [])
 
-
+def ingamemenu(player):
+    print('1 - Tovább a következő biomra')
+    print('2 - Irány valamelyik puszta')
+    valasz = input('Válasz: ')
+    match valasz:
+        case '1':
+            return
+        case '2':
+            print('1 - Füves biom')
+            print('1 - Felhő biom')
+            print('1 - Hegyvidék biom')
+            print('1 - Alvilág biom')
+            valasz2 = input('Válasz: ')
+            match valasz2:
+                case '1':
+                    puszta(player, ['Normal', 'Grass', 'Water', 'Ground', 'Poison'])
+                    return
+                case '2':
+                    puszta(player, ['Electric', 'Ice', 'Flying', 'Bug'])
+                    return
+                case '3':
+                    puszta(player, ['Rock', 'Fighting'])
+                    return
+                case '4':
+                    puszta(player, ['Fire', 'Psychic', 'Ghost', 'Dragon'])
+                    return
 
 
 

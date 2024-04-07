@@ -1,6 +1,6 @@
 import platform
 import os
-import classes2
+
 
 class Pokemon:
     def __init__(self, row: str) -> None:
