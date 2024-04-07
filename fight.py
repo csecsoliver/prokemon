@@ -172,7 +172,24 @@ def wild_fight(player: classes.Player, opponent_types: list):
                     print("Sikeresen megléptél a harcból!")
                     wait(3)
                     clear()
-                    return False
+                    return player
+            case "7":
+                for i in player.items:
+                    if i.name == "Pokeball":
+                        if random.randint(0, 2) == 0:
+                            ongoing = False
+                            clear()
+                            print("Sikeresen elkapta a wild pokemont!")
+                            wait(3)
+                            clear()
+                            player.pokemons.append(classes2.Player_pokemon("Wild " + opponent.name, opponent, opponent.hp, 100))
+                            return player
+                        else:
+                            clear()
+                            print("A wild pokemon meglépett!")
+                            wait(3)
+                            clear()
+                            return player
             case _:
                 passs = True
         
@@ -186,7 +203,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
             print(f"{player.pokemons[selected_pokemon].nickname} legyőzte {opponent.name}-t!")
             wait(3)
             clear()
-            return True
+            return player
         
         if player.pokemons[selected_pokemon].health <= 0:
             
@@ -421,7 +438,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
                 player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
                 clear()
-                return True
+                return player
         
         if player.pokemons[selected_pokemon].health <= 0:
             
