@@ -48,12 +48,12 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type2))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type1))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type2))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type1))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 
@@ -74,12 +74,12 @@ def wild_fight(player: classes.Player, opponent_types: list):
                     if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                         effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                         effectiveness = round(effectiveness, 2)
-                    elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                        effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                        effectiveness = round(effectiveness, 2)
-                    elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                        effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                        effectiveness = round(effectiveness, 2)
+                    # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                    #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                    #     effectiveness = round(effectiveness, 2)
+                    # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                    #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                    #     effectiveness = round(effectiveness, 2)
                     
                     effectiveness *= random.uniform(0.85, 1.15)
                     
@@ -108,12 +108,12 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 
@@ -139,12 +139,12 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 effectiveness *= random.uniform(0, 0.4)
@@ -285,6 +285,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
     ongoing = True
     message = None
     selected_pokemon = 0
+    opponent_selected_pokemon = 0
         
     
     
@@ -310,12 +311,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type2))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type1))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type1, opponent.type2))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(player.pokemons[selected_pokemon].pokemon.type2, opponent.type1))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 
@@ -336,12 +337,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                     if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                         effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                         effectiveness = round(effectiveness, 2)
-                    elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                        effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                        effectiveness = round(effectiveness, 2)
-                    elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                        effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                        effectiveness = round(effectiveness, 2)
+                    # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                    #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                    #     effectiveness = round(effectiveness, 2)
+                    # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                    #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                    #     effectiveness = round(effectiveness, 2)
                     
                     effectiveness *= random.uniform(0.85, 1.15)
                     
@@ -370,12 +371,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 
@@ -401,12 +402,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 if (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 != ""):
                     effectiveness = effectiveness * (classes.fordito( opponent.type2, player.pokemons[selected_pokemon].pokemon.type2))
                     effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
-                    effectiveness = round(effectiveness, 2)
-                elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
-                    effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
-                    effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 == "") and (opponent.type2 != ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type2, player.pokemons[selected_pokemon].pokemon.type1))
+                #     effectiveness = round(effectiveness, 2)
+                # elif (player.pokemons[selected_pokemon].pokemon.type2 != "") and (opponent.type2 == ""):
+                #     effectiveness = effectiveness * (classes.fordito(opponent.type1, player.pokemons[selected_pokemon].pokemon.type2))
+                #     effectiveness = round(effectiveness, 2)
                 
                 effectiveness *= random.uniform(0.85, 1.15)
                 effectiveness *= random.uniform(0, 0.4)
@@ -462,8 +463,11 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
             if trainer_pokemons.index(opponent.name) < len(trainer_pokemons) - 1:
                 
                 for i in classes.osszespokemon:
-                    if i.name == trainer_pokemons[trainer_pokemons.index(opponent.name) + 1]:
+                    if i.name == trainer_pokemons[opponent_selected_pokemon + 1]:
                         opponent = i
+                        opponent_selected_pokemon += 1
+                        break
+                        
         
 
                 opponent_health = opponent.hp

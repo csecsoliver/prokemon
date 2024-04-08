@@ -132,14 +132,15 @@ def load_a_save():
         line = file.readline().strip()
         if line == 'POKEMONS':
             break
-        player.items.append(Item(line))
+        player.items.append(all_items[int(line)])
     while True:
         line = file.readline().strip()
         if line == 'END':
             break
         splitted = line.split(',')
-        player.pokemons.append(Player_pokemon(splitted[0], osszespokemon[int(splitted[1])], int(splitted[2]), 100))
+        player.pokemons.append(Player_pokemon(splitted[0], osszespokemon[int(splitted[1])], osszespokemon[int(splitted[1])].hp, 100))
     saveend = input('A betöltés sikeres! Tovább...')
+    file.close()
     clearscreen()
     return player
 

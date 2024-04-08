@@ -125,12 +125,13 @@ def save(player: Player) -> bool:
     file = open(nameinput + '.csv', 'w', encoding='utf8')
     file.write(f'{player.name}\n')
     for i in player.items:
-         file.write(f'{i}\n')
+         file.write(f'{i.num}\n')
     file.write('POKEMONS\n')
     for p in player.pokemons:
-        file.write(f'{osszespokemon.index(p)}\n')
+        file.write(f'{p.nickname},{osszespokemon.index(p.pokemon)}\n')
     file.write('END')
     saveend = input('A mentés sikeres! Folytatja a játékot? ')
+    file.close()
     match saveend:
         case 'i':
             return True

@@ -70,6 +70,19 @@ def game():
         boss_biom(player)
         print('Gratulálok sikeresen végigjátszottad a játékot!')
         b()
+    elif choice == "2":
+        clear()
+        grassy_biom(player)
+        ingamemenu(player)
+        cloud_biom(player)
+        ingamemenu(player)
+        mountain_biom(player)
+        ingamemenu(player)
+        underworld_biom(player)
+        ingamemenu(player)
+        boss_biom(player)
+        print('Gratulálok sikeresen végigjátszottad a játékot!')
+        b()
         
             
 def new_game():
