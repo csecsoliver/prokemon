@@ -130,6 +130,7 @@
   }
   .kartya-img {
     height: 400px;
+    overflow: hidden;
   }
 
 .focimek {
@@ -177,6 +178,7 @@
   color: #ffc107;
   border: 2px solid #ffc107;
   margin-bottom: 20px;
+  height: 600px;
 }
 #myBtn {
   display: none; 

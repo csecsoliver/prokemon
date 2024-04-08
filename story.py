@@ -1,5 +1,5 @@
-import classes
-import classes2
+from classes import *
+from classes2 import *
 import random
 from fight import *
 from time import sleep as wait
@@ -52,16 +52,25 @@ def puszta(player, typeslist):
     wild_fight(player, typeslist)
     
 
-def grassy_biom(player):
+def grassy_biom(player: Player):
     typeslist = ['Normal', 'Grass', 'Water', 'Ground', 'Poison']
     aaron_pokemons = ['Bulbasaur', 'Pidgey', 'Psyduck']
     print(f'Max: Üdvözöllek {player.name}! Szükségem lenne a segítségedre mert Gloria át akarja venni az uralmat az összes pokemon felett és ezt nem hagyhatjuk!\n Látom benned a potenciált ott is van egy füves puszta el is kezdhetsz gyakorolni és pokemonokat szerezni!')
     input('Tovább...')
+    clearscreen()
+    print(f"Kapsz egy pokemont és egy pokelabdát, hogy segítsen utadon!")
+    input("Tovább...")
+    clearscreen()
+    pokimon = classes.osszespokemon[random.randint(0, len(classes.osszespokemon))]
+    player.pokemons.append(classes2.Player_pokemon(pokimon.name, pokimon, pokimon.hp, 100))
+    player.items.append(classes2.Item([1,"pokeball","Elfogja a pokemont",0,0,0,0]))
     puszta(player, typeslist)
     print('Max: Ez egész ügyes volt de mielőtt találkozol az elő igazi ellenfeleddel rádfér mégegy kör!')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
-    print('story')
+    print('Max: Ennek a területnek a mestere Aaron. Még rajta át kell magad verekedned hogy továbbmehess.')
+    wait(4)
     while True:
         input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
@@ -71,7 +80,9 @@ def grassy_biom(player):
             break
 
     trainer_fight(player, 'Aaron', aaron_pokemons)
-    print('story')
+    print('Max: Az első mester akit legyőztél! Remélem jó érzés. Szerintem indulhatunk is tovább')
+    wait(4)
+    clearscreen()
 
 
 def cloud_biom(player):
@@ -79,11 +90,14 @@ def cloud_biom(player):
     lyra_pokemons = ['Raichu', 'Scyther', 'Zubat']
     print('MAx: Ooo igen a felhős vidék, gondolom érzed ezt a csodás friss levegőt! Tökéletes idő új pokeonok befogására!')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
     print('Max: Igen itt már újabb fajta pokemonok találhatók úgyhogy csak óvatosan az ellenfeleiddel!')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
     print('Max: Már csak Lyra nagymestert kell legyőzni de vigyzz vele mert Electic és Flying típusokat is használ!')
+    wait(4)
     while True:
         input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
@@ -94,17 +108,20 @@ def cloud_biom(player):
 
     trainer_fight(player, 'Lyra', lyra_pokemons)
     print('Max: Legyőzted! Büszke vagyok! Gyorsan nincs több vesztegetni való időnk')
+    wait(4)
+    clearscreen()
 
 def mountain_biom(player):
     typeslist = ['Rock', 'Fighting']
     dawn_pokemons = ['Aerodactyl', 'Kabuto', 'Mankey']
     print('Max: Utálom a hegyvidéket! És ezzel együtt itt található a legkevesebb pokemon. Na mindegy túl kell esnünk rajta mert az összes mestert le kell győznünk.')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
     print('Max: Akármennyire is nem szeretem ezt a területet meglehetősen erősek itt a pokemonok szóval próbálj minél többet szerezni!')
     input('Tovább...')
-    puszta(player, typeslist)
-    print('story')
+    clearscreen()
+    
     while True:
         input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
@@ -114,18 +131,23 @@ def mountain_biom(player):
             break
 
     trainer_fight(player, 'Dawn', dawn_pokemons)
-    print('story')
-
+    print('Max: Nem gondoltam volna hogy le tudod győzni elég erős ellenfél volt de végig neked szurkoltam!')
+    wait(4)
+    clearscreen()
 def underworld_biom(player):
     typeslist = ['Fire', 'Psychic', 'Ghost', 'Dragon']
     whitney_pokemons = ['Arcanine', 'Dratini', 'Charmander']
-    print('(story)')
+    print('Max: Már csak egy mester van de előbb ismerkedj meg az új biommal!')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
-    print('(story szöveg)')
+    print('Max: Nem is megy rosszul na de ez még nem elég egy nagymester ellen!')
     input('Tovább...')
+    clearscreen()
     puszta(player, typeslist)
-    print('story')
+    print('Elérkeztél most közelebb vagyunk a végéhez mint valaha is voltunk!')
+    wait(4)
+    clearscreen()
     while True:
         input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
         if input_ == 'i':
@@ -136,22 +158,22 @@ def underworld_biom(player):
 
     trainer_fight(player, 'Whitney', whitney_pokemons)
     print('Max: Legyőzted Whitney-t el se hiszem! Ő volt az utolsó nagyhatalmú pokemon mester! Már csak Gloria választ el a célunktól.')
-    wait('5')
-    system('cls')
+    wait(5)
+    clearscreen()
 
 def boss_biom(player):
     max_pokemons = ['Charizard', 'Mewtwo', 'Articuno']
     gloria_pokemons = ['Dragonite', 'Charmeleon', 'Ivysaur']
-    system('cls')
+    clearscreen()
     print('Max: Végre elérkeztünk ide és le tudjuk győzni Gloria-t és megakadályozhatjuk hogy övé legyen a hatalom!')
-    wait('5')
-    system('cls')
+    wait(5)
+    clearscreen()
     print('Gloria: Már régóta vártalak kölyök! Már csak téged kell eltakarítanom az utamból! Állj ki ellenem és küzdjünk meg a hatalomért!')
     input('Harc...')
-    system('cls')
+    clearscreen()
     trainer_fight(player, 'Gloria', gloria_pokemons)
-    system('cls')
+    clearscreen()
     print('Max: Én.. Én nem hiszem el hogy tényleg legyőzted nekem Gloria-t! Hát ez hihetetlen most pedig enyém a világ végre!!!')
-    wait('5')
-    system('cls')
+    wait(5)
+    clearscreen()
     trainer_fight(player, 'Max', max_pokemons)
