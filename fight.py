@@ -23,6 +23,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
     clear()
     ongoing = True
     message = None
+    passs = False
     selected_pokemon = 0
     while ongoing:
         clear()
@@ -35,6 +36,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
             clear()
             print("Minden pokémonod harcképtelen!")
             wait(3)
+            player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
             clear()
             return player
         return_value = fight_gui(player.pokemons[selected_pokemon], opponent.name, opponent, opponent_health, message)
@@ -214,6 +216,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
             print(f"{player.pokemons[selected_pokemon].nickname} legyőzte {opponent.name}-t!")
             wait(3)
             clear()
+            player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
             return player
         
         if player.pokemons[selected_pokemon].health <= 0:
@@ -293,6 +296,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
         if fainted_pokemon == len(player.pokemons):
             clear()
             print("Legyőzött az ellenfeled!")
+            player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
             wait(3)
             clear()
             return player
@@ -522,10 +526,10 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
 def fight_gui(my_pokemon: classes2.Player_pokemon, enemy_name, enemy_pokemon: classes.Pokemon, opponent_health: int, what_happened: str = None):
     print(my_pokemon.nickname + " vs " + enemy_pokemon.name)
     print("-" * 60)
-    options = ["",f"Ellenség, {enemy_name} életpontjai: {opponent_health} / {enemy_pokemon.hp}", f"{my_pokemon.nickname} életpontjai: {my_pokemon.health} / {my_pokemon.pokemon.hp}",f"Energia: {my_pokemon.energy}" , "1. Támadás","2. Várakozás", "3. Védekezés", "4. Tárgy használata", "5. Prokemon csere", "6. Menekülés"]
+    options = ["",f"Ellenség, {enemy_name} életpontjai: {opponent_health} / {enemy_pokemon.hp}", f"{my_pokemon.nickname} életpontjai: {my_pokemon.health} / {my_pokemon.pokemon.hp}",f"Energia: {my_pokemon.energy}" , "1. Támadás","2. Várakozás", "3. Védekezés", "4. Tárgy használata", "5. Prokemon csere", "6. Menekülés", "7. Pokeball használata"]
     if what_happened != None:
         options[0] = what_happened
-    for i in range(10):
+    for i in range(11):
         if i < len(options):
             print(f"""│ {f"{options[i]}".ljust(56)} │""")
         else:

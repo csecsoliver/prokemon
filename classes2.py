@@ -86,13 +86,14 @@ class Player_pokemon:
 
 class Item:
     def __init__(self, row) -> None:
-        self.num = int(row[0])
-        self.name = row[1]
-        self.desc = row[2]
-        self.defe = int(row[3])
-        self.atk = int(row[4])
-        self.speed = int(row[5])
-        self.heal = int(row[6])
+        spltd = row.strip().split(',')
+        self.num = spltd[0]
+        self.name = spltd[1]
+        self.desc = spltd[2]
+        self.defe = int(spltd[3])
+        self.atk = int(spltd[4])
+        self.speed = int(spltd[5])
+        self.heal = int(spltd[6])
 
 def pick_pokemon(player: Player, num_of_first = 0):
     classes.clearscreen()

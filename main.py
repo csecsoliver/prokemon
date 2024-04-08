@@ -38,26 +38,27 @@ def game():
     if choice == "1":
         clear()
         print(f"Üdvözöllek {player.name}!")
-        wait(1)
+        input('Tovább...')
         clear()
         print("Ez egy pokemon játék.")
-        wait(1)
+        input('Tovább...')
         clear()
         print("A játék célja, hogy minél erősebb prokemonokat gyűjts össze, és legyőzd a legerősebb ellenfeleket is.")
-        wait(1)
+        input('Tovább...')
         clear()
         print("A játékban a pokemontokat prokelabdákkal gyűjtheted össze.")
-        wait(1)
+        input('Tovább...')
         clear()
         print("A prokemontokat a harcokban használhatod.")
-        wait(1)
+        input('Tovább...')
         clear()
         print("A játékban a prokemontokat a Prokedexben tudod megnézni.")
-        wait(1)
+        input('Tovább...')
         clear()
         print("A prokedex elindítható a főmenüből, vagy a külön fájllal is.")
 
-        wait(2)
+        input('Tovább...')
+        clear()
         grassy_biom(player)
         ingamemenu(player)
         cloud_biom(player)
@@ -105,6 +106,10 @@ def ingamemenu(player):
                     return
         case "3":
             classes.save(player)
+        case _:
+            print('Nem opció')
+            wait(1)
+            ingamemenu(player)
 
 
 
