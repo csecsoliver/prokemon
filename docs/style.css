@@ -1,0 +1,203 @@
+.navbar {
+    background-color: black !important;
+    border-bottom: 5px solid #ffd700 !important;
+  }
+
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #ffd700 !important;
+    transition: ease-in-out 0.3s;
+  }
+  .nav-link:hover {
+    color: rgb(134, 127, 65) !important;
+    border: #ffd700 solid 1px;
+    border-top-left-radius: 30px !important;
+    border-bottom-left-radius:30px !important;
+    border-bottom-right-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+    overflow: hidden;
+  }
+
+  /* Card style */
+  .card {
+    border: #ffd700 solid 1px;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    overflow: hidden;
+    transition: ease-in-out 0.3s;
+  }
+
+  .card-body {
+    background-color: #000;
+    color: #ffd700;
+  }
+
+  .card:hover {
+    scale: 105%;
+  }
+
+  .card-title,
+  .card-text {
+    color: #ffd700;
+  }
+
+  .btn-primary {
+    background-color: #ffd700;
+    border-color: #ffd700;
+  }
+
+  .btn-primary:hover {
+    background-color: #c6a600;
+    border-color: #c6a600;
+  }
+  body {
+    background-color: black;
+    color: #fff;
+  }
+
+
+  .kártya {
+    border: 2px #ffd700 solid ;
+    height: 50px;
+    margin: 20px;
+    
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    overflow: hidden;
+    transition: ease-in-out 0.3s;
+  }
+
+  .kártya-body {
+    background-color: #000;
+    color: #ffd700;
+  }
+
+  .kártya:hover {
+    scale: 105%;
+  }
+
+  .kártya-title,
+  .kártya-text {
+    color: #ffd700;
+  }
+  .gomb-link {
+    color: #ffd700;
+    background-color: black;
+    border: none;
+  }
+  .gomb-link:active {
+    border: none;
+  }
+
+  .accordion {
+    border: 2px #ffd700 solid ;
+    margin: 20px;
+    overflow: hidden;
+  }
+
+  .accordion-body {
+    background-color: #000;
+    color: #ffd700;
+    border: 1px solid #ffd700;
+  }
+.accordion-header {
+  background-color: #000 !important;
+}
+.accordion-button {
+  background-color: #ffd700 !important;
+  
+}
+.accordion-button.collapsed {
+  background-color: #000 !important;
+  color: #ffd700;
+}
+
+  .accordion-title,
+  .accordion-text {
+    color: #ffd700;
+  }
+
+  .accordion-item {
+    border: 1px #ffd700 solid;
+  }
+  .accordion.szoveg {
+    text-align: justify;
+    
+  }
+  .kartya-img {
+    height: 400px;
+    overflow: hidden;
+  }
+
+.focimek {
+  color: #ffd700;
+  font-size: 35px;
+}
+
+.kiscimek {
+  color: #ffd700;
+  font-size: 20px;
+}
+
+.lista {
+  color: #ffd700;
+}
+.ceglogo {
+  margin-left: 5px;
+  width: 20%;
+}
+.letoltes {
+  color: #ffd700;
+  text-decoration: none;
+}
+.letoltes:visited {
+  color: #ffd700;
+}
+.letoltes:active{
+  color: #ffd700;
+}
+
+.letoltes:hover {
+  color: rgb(134, 127, 65);
+}
+.group {
+  border-right: 1px solid #ffd700;
+  border-left: 1px solid #ffd700;
+}
+
+.jumbotron {
+  background-color: #000;
+  color: #ffc107;
+}
+.card {
+  background-color: #000;
+  color: #ffc107;
+  border: 2px solid #ffc107;
+  margin-bottom: 20px;
+  height: 600px;
+}
+#myBtn {
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: #000; 
+  color: #ffc107; 
+  cursor: pointer; 
+  border: 1px solid #ffd700;
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
+}
+
+#myBtn:hover {
+  background-color: #ffd700;
+  color: #000;
+}
