@@ -79,6 +79,7 @@ def new_game():
 def ingamemenu(player):
     print('1 - Tovább a következő biomra')
     print('2 - Irány valamelyik puszta')
+    print("3 - Mentés")
     valasz = input('Válasz: ')
     match valasz:
         case '1':
@@ -102,6 +103,8 @@ def ingamemenu(player):
                 case '4':
                     puszta(player, ['Fire', 'Psychic', 'Ghost', 'Dragon'])
                     return
+        case "3":
+            classes.save(player)
 
 
 

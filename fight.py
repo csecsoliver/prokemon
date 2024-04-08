@@ -273,6 +273,10 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
     wait(3)
     clear()
     opponent = trainer_pokemons[0]
+    for i in classes.osszespokemon:
+        if i.name == trainer_pokemons[0]:
+            opponent = i
+        
     opponent_health = opponent.hp
     ongoing = True
     message = None
@@ -445,7 +449,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
             wait(3)
             clear()
             if trainer_pokemons.index(opponent) < len(trainer_pokemons) - 1:
-                opponent = trainer_pokemons[trainer_pokemons.index(opponent) + 1]
+                
+                for i in classes.osszespokemon:
+                    if i.name == trainer_pokemons[trainer_pokemons.index(opponent.name) + 1]:
+                        opponent = i
+        
+
                 opponent_health = opponent.hp
                 clear()
                 message = f"{trainer_name} beküldi {opponent.name}-t!"

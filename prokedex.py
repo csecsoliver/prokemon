@@ -143,20 +143,10 @@ def create():
     clear()
     name = input("Prokemon neve: ")
     
-    while True:
-        type1 = input("Típus 1: ")
-        if type1 not in classes.type_list:
-            print("Nem létező típus")
-            wait(1)
-        else:
-            break
-    while True:
-        type2 = input("Típus 2: ")
-        if type2 not in classes.type_list:
-            print("Nem létező típus")
-            wait(1)
-        else:
-            break
+    
+    type1 = input("Típus 1: ")
+    
+    type2 = input("Típus 2: ")
     
     while True:
         hp = input("Életpontok: ")
