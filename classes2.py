@@ -3,6 +3,7 @@ from classes import Pokemon as Pokemon
 from classes import Player as Player
 from classes import osszespokemon as osszespokemon
 from classes import load_from_file as load_from_file
+from classes import clearscreen as clearscreen
 import menu
 class Player_pokemon:
     def __init__(self, nickname, pokemon: Pokemon, health: int, energy: int) -> None:
@@ -44,7 +45,7 @@ class Player_pokemon:
             return f"{self.nickname} healed {healing_hp}hp and now has {self.health}hp"
     
     def pick_item(self, player: Player, num_of_first = 0):
-        classes.clearscreen()
+        clearscreen()
         if num_of_first <0: num_of_first = 0
         if num_of_first > len(player.items):
             num_of_first = len(player.items)
@@ -96,7 +97,7 @@ class Item:
         self.heal = int(spltd[6])
 
 def pick_pokemon(player: Player, num_of_first = 0):
-    classes.clearscreen()
+    clearscreen()
     if num_of_first <0: num_of_first = 0
     if num_of_first > len(player.pokemons):
         num_of_first = len(player.pokemons)
@@ -122,6 +123,26 @@ def pick_pokemon(player: Player, num_of_first = 0):
             if choice.isnumeric():
                 if int(choice) in [3,4,5,6,7,8,9]:
                     return num_of_first + (int(choice)-3)
+
+def load_a_save():
+    nameinput = input('Add meg a mentés nevét! ')
+    file = open(nameinput + '.csv', 'r', encoding='utf8')
+    player = classes.Player(file.readline().strip(), [], [])
+    while True:
+        line = file.readline().strip()
+        if line == 'POKEMONS':
+            break
+        player.items.append(Item(line))
+    while True:
+        line = file.readline().strip()
+        if line == 'END':
+            break
+        splitted = line.split(',')
+        player.pokemons.append(Player_pokemon(splitted[0], osszespokemon[int(splitted[1])], int(splitted[2]), 100))
+    saveend = input('A betöltés sikeres! Tovább...')
+    clearscreen()
+    return player
+
     
 
 all_items: list[Item] = []

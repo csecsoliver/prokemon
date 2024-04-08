@@ -128,16 +128,17 @@ def save(player: Player) -> bool:
          file.write(f'{i}\n')
     file.write('POKEMONS\n')
     for p in player.pokemons:
-        file.write(f'{p}\n')
+        file.write(f'{osszespokemon.index(p)}\n')
+    file.write('END')
     saveend = input('A mentés sikeres! Folytatja a játékot? ')
     match saveend:
         case 'i':
             return True
         case 'n':
-            return False
+            exit()
         case _:
             print('Írj már be valami olyat amit kértem légysziiii, ezt akkor egy nemnek veszem csáá')
-            return False
+            exit()
         
 
 #save(player)

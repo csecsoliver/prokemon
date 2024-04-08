@@ -63,7 +63,7 @@ def grassy_biom(player: Player):
     clearscreen()
     pokimon = classes.osszespokemon[random.randint(0, len(classes.osszespokemon))]
     player.pokemons.append(classes2.Player_pokemon(pokimon.name, pokimon, pokimon.hp, 100))
-    player.items.append(classes2.Item([1,"pokeball","Elfogja a pokemont",0,0,0,0]))
+    player.items.append(classes2.all_items[0])
     puszta(player, typeslist)
     print('Max: Ez egész ügyes volt de mielőtt találkozol az elő igazi ellenfeleddel rádfér mégegy kör!')
     input('Tovább...')

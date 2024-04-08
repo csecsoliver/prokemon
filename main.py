@@ -32,7 +32,7 @@ def game():
             player = new_game()
             
         case "2":
-            player = classes.load_a_save() # ez még nincs megírva
+            player = classes2.load_a_save() # ez még nincs megírva
         case "3":
             return True
     if choice == "1":

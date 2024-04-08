@@ -126,7 +126,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 if effectiveness == 1:
                     message += "Sikeres támadás"
                 
-                damage = round(opponent.atk * effectiveness * 0.3)
+                damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
                 player.pokemons[selected_pokemon].damage(damage)
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-40, -17))
@@ -157,7 +157,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                 if effectiveness == 1:
                     message += "Sikeres támadás"
                 
-                damage = round(opponent.atk * effectiveness * 0.3)
+                damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
                 player.pokemons[selected_pokemon].damage(damage)
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-20, -5))
@@ -185,6 +185,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
                     print("Sikeresen megléptél a harcból!")
                     wait(3)
                     clear()
+                    player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
                     return player
             case "7":
                 for i in player.items:
@@ -264,7 +265,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
             if effectiveness == 1:
                 message += "Sikeres támadás"
             
-            damage = round(opponent.atk * effectiveness * 0.3)
+            damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
             player.pokemons[selected_pokemon].damage(damage)
 
 
@@ -387,7 +388,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 if effectiveness == 1:
                     message += "Sikeres támadás"
                 
-                damage = round(opponent.atk * effectiveness * 0.3)
+                damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
                 player.pokemons[selected_pokemon].damage(damage)
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-40, -17))
@@ -418,7 +419,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 if effectiveness == 1:
                     message += "Sikeres támadás"
                 
-                damage = round(opponent.atk * effectiveness * 0.3)
+                damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
                 player.pokemons[selected_pokemon].damage(damage)
                 
                 player.pokemons[selected_pokemon].use_energy(random.randint(-20, -5))
@@ -444,6 +445,12 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
                 wait(3)
                 clear()
                 passs = True
+            case "7":
+                clear()
+                print("Ez itt nem lehetséges!")
+                wait(3)
+                clear()
+                passs = True
             case _:
                 passs = True
         
@@ -452,7 +459,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
             print(f"{player.pokemons[selected_pokemon].nickname} legyőzte {opponent.name}-t!")
             wait(3)
             clear()
-            if trainer_pokemons.index(opponent) < len(trainer_pokemons) - 1:
+            if trainer_pokemons.index(opponent.name) < len(trainer_pokemons) - 1:
                 
                 for i in classes.osszespokemon:
                     if i.name == trainer_pokemons[trainer_pokemons.index(opponent.name) + 1]:
@@ -519,7 +526,7 @@ def trainer_fight(player, trainer_name, trainer_pokemons: list):
             if effectiveness == 1:
                 message += "Sikeres támadás"
             
-            damage = round(opponent.atk * effectiveness * 0.3)
+            damage = round(opponent.atk * effectiveness * 0.3 - player.pokemons[selected_pokemon].pokemon.defe / 10)
             player.pokemons[selected_pokemon].damage(damage)
 
 
