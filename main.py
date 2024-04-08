@@ -100,9 +100,9 @@ def ingamemenu(player):
             return
         case '2':
             print('1 - Füves biom')
-            print('1 - Felhő biom')
-            print('1 - Hegyvidék biom')
-            print('1 - Alvilág biom')
+            print('2 - Felhő biom')
+            print('3 - Hegyvidék biom')
+            print('4 - Alvilág biom')
             valasz2 = input('Válasz: ')
             match valasz2:
                 case '1':

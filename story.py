@@ -72,7 +72,7 @@ def grassy_biom(player: Player):
     print('Max: Ennek a területnek a mestere Aaron. Még rajta át kell magad verekedned hogy továbbmehess.')
     wait(4)
     while True:
-        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n ')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
@@ -99,7 +99,7 @@ def cloud_biom(player):
     print('Max: Már csak Lyra nagymestert kell legyőzni de vigyzz vele mert Electic és Flying típusokat is használ!')
     wait(4)
     while True:
-        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n ')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
@@ -123,7 +123,7 @@ def mountain_biom(player):
     clearscreen()
     
     while True:
-        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Max: Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n ')
         if input_ == 'i':
             puszta(player, typeslist)
             pass
@@ -149,7 +149,7 @@ def underworld_biom(player):
     wait(4)
     clearscreen()
     while True:
-        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n')
+        input_ = input('Szeretnél visszafordulni és visszamenni a puszta területre? Ha nem akkor a boss harccal fogod folytatni. i/n ')
         if input_ == 'i':
             puszta(player, typeslist)
             pass

@@ -1,5 +1,5 @@
 num,name,desc,defe,atk,speed,heal
-0,pokeball,the most basic ball,0,0,0,0
+0,Pokeball,the most basic ball,0,0,0,0
 1,Életelixír,Életpontok teljesen feltöltve,0,0,0,9274834928
 2,Védekezéselixír,Védekezés növelve 70-el,70,0,0,0
 3,Erőelixír,Erő növelve 70-el,0,70,0,0

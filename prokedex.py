@@ -12,13 +12,13 @@ def main(external=True):
         wait(0.5)
         input("Nyomjon meg egy gombot a folytatáshoz...")
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Kilépés"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Fejlett keresés", "Új prokemon készítése", "Kilépés"])
     elif external is True:
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Vissza a főmenübe"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Fejlett keresés", "Új prokemon készítése", "Vissza a főmenübe"])
     elif external == "nope":
         clear()
-        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Új prokemon készítése", "Kilépés"])
+        mode = menu.generic_menu("Prokedex", ["Prokemonok böngészése", "Keresés", "Fejlett keresés", "Új prokemon készítése", "Kilépés"])
     
     match mode:
         case "1":
@@ -32,8 +32,15 @@ def main(external=True):
             search()
         case "3":
             clear()
-            create()
+            adv_search()
         case "4":
+            clear()
+            create()
+        case "5":
+            clear()
+            if external is not True:
+                print("Kilépés...")
+                wait(0.5)
             return
         case "0":
             clear()
@@ -95,31 +102,72 @@ def view_prokemon(num, collection=classes.osszespokemon):
                     filtered.append(i)
             browse(0, filtered)
         case "2":
-            for i in classes.osszespokemon:
-                if i.hp == prokemon.hp or (-10 < (i.hp - prokemon.hp) < 10):
-                    print(i.hp, prokemon.hp, (-10 < (i.hp - prokemon.hp) < 10))
-                    filtered.append(i)
+            filtered = search_by_stat(classes.osszespokemon, prokemon.hp, "1")
+            
             browse(0, filtered)
         case "3":
-            for i in classes.osszespokemon:
-                if i.atk == prokemon.atk or (-10 < (i.atk - prokemon.atk) < 10):
-                    filtered.append(i)
+            filtered = search_by_stat(classes.osszespokemon, prokemon.atk, "2")
+            
             browse(0, filtered)
         case "4":
-            for i in classes.osszespokemon:
-                if i.defe == prokemon.defe or (-10 < (i.defe - prokemon.defe) < 10):
-                    filtered.append(i)
+            filtered = search_by_stat(classes.osszespokemon, prokemon.defe, "3")
+            
             browse(0, filtered)
         case "5":
-            for i in classes.osszespokemon:
-                if i.speed == prokemon.speed or (-10 < (i.speed - prokemon.speed) < 10):
-                    filtered.append(i)
+            filtered = search_by_stat(classes.osszespokemon, prokemon.speed, "4")
+            
             browse(0, filtered)
         case _:
             print("Nem opció")
             wait(1)
             view_prokemon(num)
 
+def search_by_stat(collection=classes.osszespokemon, value=None, stat=None):
+    filtered = []
+    if stat == "1":
+        for i in collection:
+            if i.hp == value or (-10 < (i.hp - value) < 10):
+                filtered.append(i)
+    elif stat == "2":
+        for i in collection:
+            if i.atk == value or (-10 < (i.atk - value) < 10):
+                filtered.append(i)
+    elif stat == "3":
+        for i in collection:
+            if i.defe == value or (-10 < (i.defe - value) < 10):
+                filtered.append(i)
+    elif stat == "4":
+        for i in collection:
+            if i.speed == value or (-10 < (i.speed - value) < 10):
+                filtered.append(i)
+    elif stat == "5":
+        for i in collection:
+            if i.type1.lower() == value.lower() or i.type2.lower() == value.lower():
+                filtered.append(i)
+    return filtered
+
+def adv_search():
+    clear()
+    match menu.generic_menu("Keresési lehetőségek", ["Típus", "Életpontok", "Támadás", "Védekezés", "Sebesség", "Vissza"]):
+        case "1":
+            type = input("Típus: ")
+            browse(0, search_by_stat(classes.osszespokemon, type, "5"))
+        case "2":
+            hp = input("Életpontok: ")
+            browse(0, search_by_stat(classes.osszespokemon, int(hp), "1"))
+        case "3":
+            atk = input("Támadás: ")
+            browse(0, search_by_stat(classes.osszespokemon, int(atk), "2"))
+        case "4":
+            defe = input("Védekezés: ")
+            browse(0, search_by_stat(classes.osszespokemon, int(defe), "3"))
+        case "5":
+            speed = input("Sebesség: ")
+            browse(0, search_by_stat(classes.osszespokemon, int(speed), "4"))
+        case "6":
+            return
+    
+    
 
 def search():
     clear()
