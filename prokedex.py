@@ -59,7 +59,8 @@ def browse(num_of_first = 0, to_browse=classes.osszespokemon, title="Összes pro
             to_browse_filtered.append(to_browse[num_of_first + i])
         else:
             to_browse_filtered.append(classes2.Item([0, "", 0, 0, 0, 0, 0]))
-    choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[num_of_first + 0].name, to_browse_filtered[num_of_first + 1].name, to_browse_filtered[num_of_first + 2].name, to_browse_filtered[num_of_first + 3].name, to_browse_filtered[num_of_first + 4].name, to_browse_filtered[num_of_first + 5].name, to_browse_filtered[num_of_first + 6].name, "Tovább"])
+    # choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[num_of_first + 0].name, to_browse_filtered[num_of_first + 1].name, to_browse_filtered[num_of_first + 2].name, to_browse_filtered[num_of_first + 3].name, to_browse_filtered[num_of_first + 4].name, to_browse_filtered[num_of_first + 5].name, to_browse_filtered[num_of_first + 6].name, "Tovább"])
+    choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[0].name, to_browse_filtered[1].name, to_browse_filtered[2].name, to_browse_filtered[3].name, to_browse_filtered[4].name, to_browse_filtered[5].name, to_browse_filtered[6].name, "Tovább"])
     
     match choice:
         case "1":
@@ -77,11 +78,11 @@ def browse(num_of_first = 0, to_browse=classes.osszespokemon, title="Összes pro
                 if int(choice) in [3,4,5,6,7,8,9]:
                     if type(to_browse_filtered[int(choice)-3]) == classes2.Item:
                         browse(num_of_first, to_browse, title)
-                    view_prokemon(num_of_first + (int(choice)-3))
+                    view_prokemon(num_of_first + (int(choice)-3), to_browse)
 
 
-def view_prokemon(num):
-    prokemon = classes.osszespokemon[num]
+def view_prokemon(num, collection=classes.osszespokemon):
+    prokemon = collection[num]
     clear()
     choice = menu.generic_menu(prokemon.name, [f"Típusa: {prokemon.type1} {prokemon.type2}", f"Életpontok: {prokemon.hp}", f"Támadás: {prokemon.atk}", f"Védekezés: {prokemon.defe}", f"Sebessége: {prokemon.speed}", f"vissza"]) 
     filtered = []
@@ -95,22 +96,23 @@ def view_prokemon(num):
             browse(0, filtered)
         case "2":
             for i in classes.osszespokemon:
-                if i.hp == prokemon.hp or (i.hp - prokemon.hp < 10 and i.hp - prokemon.hp > -10):
+                if i.hp == prokemon.hp or (-10 < (i.hp - prokemon.hp) < 10):
+                    print(i.hp, prokemon.hp, (-10 < (i.hp - prokemon.hp) < 10))
                     filtered.append(i)
             browse(0, filtered)
         case "3":
             for i in classes.osszespokemon:
-                if i.atk == prokemon.atk or (i.atk - prokemon.atk < 10 and i.atk - prokemon.atk > -10):
+                if i.atk == prokemon.atk or (-10 < (i.atk - prokemon.atk) < 10):
                     filtered.append(i)
             browse(0, filtered)
         case "4":
             for i in classes.osszespokemon:
-                if i.defe == prokemon.defe or (i.defe - prokemon.defe < 10 and i.defe - prokemon.defe > -10):
+                if i.defe == prokemon.defe or (-10 < (i.defe - prokemon.defe) < 10):
                     filtered.append(i)
             browse(0, filtered)
         case "5":
             for i in classes.osszespokemon:
-                if i.speed == prokemon.speed or (i.speed - prokemon.speed < 10 and i.speed - prokemon.speed > -10):
+                if i.speed == prokemon.speed or (-10 < (i.speed - prokemon.speed) < 10):
                     filtered.append(i)
             browse(0, filtered)
         case _:
@@ -143,20 +145,9 @@ def create():
     clear()
     name = input("Prokemon neve: ")
     
-    while True:
-        type1 = input("Típus 1: ")
-        if type1 not in classes.type_list:
-            print("Nem létező típus")
-            wait(1)
-        else:
-            break
-    while True:
-        type2 = input("Típus 2: ")
-        if type2 not in classes.type_list:
-            print("Nem létező típus")
-            wait(1)
-        else:
-            break
+    type1 = input("Típus 1: ")
+
+    type2 = input("Típus 2: ")
     
     while True:
         hp = input("Életpontok: ")
