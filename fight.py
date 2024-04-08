@@ -218,6 +218,7 @@ def wild_fight(player: classes.Player, opponent_types: list):
             wait(3)
             clear()
             player.pokemons[selected_pokemon].heal_hp(player.pokemons[selected_pokemon].pokemon.hp)
+            player.items.append(classes2.all_items[random.randint(0, len(classes2.all_items) - 1)])
             return player
         
         if player.pokemons[selected_pokemon].health <= 0:
