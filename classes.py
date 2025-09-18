@@ -104,16 +104,13 @@ def clearscreen():
     match platform.system():
         case "Windows":
             os.system("cls")
-        case "Linus":
-            print("WTF are you doing?")
         case "Linux":
             os.system("clear")
         case "Darwin":
             os.system("clear")
-        case "Java":
-            print("Why? Cannot clear the screen.")
         case _:
-            print("Incompatible system, cannot clear the screen")
+            # For unsupported systems, just print some newlines
+            print("\n" * 50)
 
 #player_pokemons = [("Pikachu", osszespokemon[25], 100, 100), ("Charmander", osszespokemon[4], 100, 100), ("Squirtle", osszespokemon[7], 100, 100)]
 #player = Player("Péter",'', player_pokemons)

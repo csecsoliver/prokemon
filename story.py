@@ -47,26 +47,67 @@ Bossok pokemonjai 25-tel több hp-val és a többi statból 5-tel többel kezden
 
 
 def puszta(player, typeslist):
-    print('Megérkeztél egy puszta területre')
-    wait(2)
+    """Random wild encounter in the wilderness"""
+    clearscreen()
+    locations = [
+        "🌿 Megérkeztél egy vadregényes pusztai területre",
+        "🏔️ Egy messzi hegyvidéki ösvényen találod magad", 
+        "🌊 Egy kristálytiszta patak partján állsz",
+        "⚡ Viharos felhők gyülekeznek a horizonton",
+        "🔥 Egy vulkanikus völgyben jársz"
+    ]
+    print(random.choice(locations))
+    print("Valami megmozdul a fűben...")
+    wait(3)
     wild_fight(player, typeslist)
-    
 
 def grassy_biom(player: Player):
+    """Starting biome with tutorial and first ally"""
     typeslist = ['Normal', 'Grass', 'Water', 'Ground', 'Poison']
     aaron_pokemons = ['Bulbasaur', 'Pidgey', 'Psyduck']
-    print(f'Max: Üdvözöllek {player.name}! Szükségem lenne a segítségedre mert Gloria át akarja venni az uralmat az összes pokemon felett és ezt nem hagyhatjuk!\n Látom benned a potenciált ott is van egy füves puszta el is kezdhetsz gyakorolni és pokemonokat szerezni!')
-    input('Tovább...')
+    
     clearscreen()
-    print(f"Kapsz egy pokemont és egy pokelabdát, hogy segítsen utadon!")
-    input("Tovább...")
+    print("🌱 === FÜVES BIOM === 🌱")
+    print()
+    print(f'🧙‍♂️ Max: "Üdvözöllek {player.name}!"')
+    wait(2)
+    print('\n"Szörnyű dolgok történnek... Gloria át akarja venni az uralmat')
+    print('az összes prokemon felett, és ezt nem hagyhatjuk!"')
+    input('\nTovább...')
+    
     clearscreen()
-    pokimon = classes.osszespokemon[random.randint(0, len(classes.osszespokemon))]
-    player.pokemons.append(classes2.Player_pokemon(pokimon.name, pokimon, pokimon.hp, 100))
-    player.items.append(classes2.all_items[0])
+    print('🌟 "Látom benned a potenciált! Itt van egy füves puszta,')
+    print('ahol gyakorolhatsz és új prokemonokat szerezhetsz!"')
+    input('\nTovább...')
+    
+    clearscreen()
+    print("🎁 Kapsz egy prokemot és egy prokelabdát a segítségére!")
+    
+    # Give player a random Pokemon if they don't have any or only have one
+    if len(player.pokemons) <= 1:
+        suitable_pokemon = [p for p in classes.osszespokemon if p.type1 in typeslist or p.type2 in typeslist]
+        pokimon = random.choice(suitable_pokemon)
+        player.pokemons.append(classes2.Player_pokemon(pokimon.name, pokimon, pokimon.hp, 100))
+        print(f"✨ Új prokemon csatlakozott: {pokimon.name}!")
+    
+    # Give player items if available
+    try:
+        if hasattr(classes2, 'all_items') and classes2.all_items:
+            player.items.append(classes2.all_items[0])
+            print("🧪 Új tárgy: Gyógyító ital!")
+    except:
+        pass
+        
+    input('\nTovább...')
+    clearscreen()
+    
+    # First wild encounter
     puszta(player, typeslist)
-    print('Max: Ez egész ügyes volt de mielőtt találkozol az elő igazi ellenfeleddel rádfér mégegy kör!')
-    input('Tovább...')
+    
+    clearscreen()
+    print('🧙‍♂️ Max: "Ez egész ügyes volt! De mielőtt találkozol')
+    print('az igazi ellenfeleddel, rádfér még egy kör gyakorlás!"')
+    input('\nTovább...')
     clearscreen()
     puszta(player, typeslist)
     print('Max: Ennek a területnek a mestere Aaron. Még rajta át kell magad verekedned hogy továbbmehess.')
