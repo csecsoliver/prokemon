@@ -108,9 +108,65 @@ def start_game_progression(player):
         
             
 def new_game():
+    """Create a new game with starter Pokemon selection"""
     clear()
+    print("🌟 Új kaland kezdődik! 🌟")
+    print()
     name = input("Add meg a neved: ")
-    return classes2.Player(name, [], [])
+    
+    clear()
+    print(f"Üdvözöllek a prokemon világában, {name}!")
+    print()
+    print("🎯 Válassz egy kezdő prokemot:")
+    
+    # Starter Pokemon options (Bulbasaur, Charmander, Squirtle)
+    starters = [
+        classes.osszespokemon[0],   # Bulbasaur
+        classes.osszespokemon[3],   # Charmander  
+        classes.osszespokemon[6]    # Squirtle
+    ]
+    
+    starter_options = []
+    for i, starter in enumerate(starters, 1):
+        starter_options.append(f"{starter.name} - {starter.type1}" + 
+                             (f"/{starter.type2}" if starter.type2 else ""))
+    
+    choice = menu.generic_menu("Válassz kezdő prokemot", starter_options)
+    
+    selected_starter = starters[int(choice) - 1]
+    starter_nickname = input(f"Add meg a(z) {selected_starter.name} becenevét (vagy hagyd üresen): ").strip()
+    
+    if not starter_nickname:
+        starter_nickname = selected_starter.name
+    
+    # Create starter Pokemon with full health
+    starter_pokemon = classes2.Player_pokemon(
+        starter_nickname, 
+        selected_starter, 
+        selected_starter.hp, 
+        100
+    )
+    
+    # Give player some starting items
+    starting_items = []
+    if hasattr(classes2, 'all_items') and classes2.all_items:
+        # Add some healing items if available
+        try:
+            starting_items = [classes2.all_items[0]] * 3  # 3 healing items
+        except:
+            pass
+    
+    player = classes2.Player(name, starting_items, [starter_pokemon])
+    
+    clear()
+    print(f"🎉 Sikeresen kiválasztottad: {starter_nickname}!")
+    print(f"💚 Életerő: {starter_pokemon.health}/{starter_pokemon.pokemon.hp}")
+    print(f"⚔️ Támadás: {starter_pokemon.pokemon.atk}")
+    print(f"🛡️ Védekezés: {starter_pokemon.pokemon.defe}")
+    print(f"💨 Sebesség: {starter_pokemon.pokemon.speed}")
+    input("Nyomj Enter-t a folytatáshoz...")
+    
+    return player
 
 def ingamemenu(player):
     """In-game menu with navigation options"""
