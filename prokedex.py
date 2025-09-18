@@ -55,72 +55,115 @@ def main(external=True):
         
 
 def browse(num_of_first = 0, to_browse=classes.osszespokemon, title="Összes prokemon"):
-    clear()
-    
-    if num_of_first <0: num_of_first = 0
-    if num_of_first > len(to_browse):
-        num_of_first = len(to_browse)
-    to_browse_filtered = []
-    for i in range(7):
-        if len(to_browse) > num_of_first + i:
-            to_browse_filtered.append(to_browse[num_of_first + i])
-        else:
-            to_browse_filtered.append(classes2.Item([0, "", 0, 0, 0, 0, 0]))
-    # choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[num_of_first + 0].name, to_browse_filtered[num_of_first + 1].name, to_browse_filtered[num_of_first + 2].name, to_browse_filtered[num_of_first + 3].name, to_browse_filtered[num_of_first + 4].name, to_browse_filtered[num_of_first + 5].name, to_browse_filtered[num_of_first + 6].name, "Tovább"])
-    choice = menu.generic_menu(title, ["Vissza","Fel", to_browse_filtered[0].name, to_browse_filtered[1].name, to_browse_filtered[2].name, to_browse_filtered[3].name, to_browse_filtered[4].name, to_browse_filtered[5].name, to_browse_filtered[6].name, "Tovább"])
-    
-    match choice:
-        case "1":
+    """Browse Pokemon with improved navigation and error handling"""
+    while True:
+        clear()
+        
+        if num_of_first < 0: 
+            num_of_first = 0
+        if num_of_first >= len(to_browse):
+            num_of_first = max(0, len(to_browse) - 7)
+        
+        # Create menu options
+        menu_options = ["Vissza"]
+        if num_of_first > 0:
+            menu_options.append("Előző oldal")
+        
+        # Add Pokemon names (up to 7)
+        pokemon_count = 0
+        pokemon_start_index = len(menu_options)
+        for i in range(7):
+            if num_of_first + i < len(to_browse):
+                pokemon = to_browse[num_of_first + i]
+                menu_options.append(f"{pokemon.name} (#{num_of_first + i + 1})")
+                pokemon_count += 1
+            else:
+                break
+        
+        # Add next page option if there are more Pokemon
+        if num_of_first + 7 < len(to_browse):
+            menu_options.append("Következő oldal")
+        
+        # Show current page info
+        start_num = num_of_first + 1
+        end_num = min(num_of_first + 7, len(to_browse))
+        full_title = f"{title} ({start_num}-{end_num} / {len(to_browse)})"
+        
+        choice = menu.generic_menu(full_title, menu_options)
+        choice_num = int(choice)
+        
+        if choice_num == 1:  # Vissza
             return True
-        case "2":
-            back = browse(num_of_first - 5, to_browse, title)
-            if back == True:
-                return True
-        case "10":
-            back = browse(num_of_first + 5, to_browse, title)
-            if back == True:
-                return True
-        case _:
-            if choice.isnumeric():
-                if int(choice) in [3,4,5,6,7,8,9]:
-                    if type(to_browse_filtered[int(choice)-3]) == classes2.Item:
-                        browse(num_of_first, to_browse, title)
-                    view_prokemon(num_of_first + (int(choice)-3), to_browse)
+        elif choice_num == 2 and num_of_first > 0:  # Előző oldal
+            num_of_first = max(0, num_of_first - 7)
+        elif choice_num == len(menu_options) and num_of_first + 7 < len(to_browse):  # Következő oldal
+            num_of_first += 7
+        else:
+            # Pokemon selection
+            pokemon_index = choice_num - pokemon_start_index
+            if 0 <= pokemon_index < pokemon_count:
+                actual_index = num_of_first + pokemon_index
+                view_prokemon(actual_index, to_browse)
+            else:
+                print("Érvénytelen választás!")
+                wait(1)
 
 
 def view_prokemon(num, collection=classes.osszespokemon):
+    """Display detailed Pokemon information with better formatting"""
+    if num >= len(collection):
+        print("Prokemon nem található!")
+        wait(2)
+        return
+        
     prokemon = collection[num]
-    clear()
-    choice = menu.generic_menu(prokemon.name, [f"Típusa: {prokemon.type1} {prokemon.type2}", f"Életpontok: {prokemon.hp}", f"Támadás: {prokemon.atk}", f"Védekezés: {prokemon.defe}", f"Sebessége: {prokemon.speed}", f"vissza"]) 
-    filtered = []
-    match choice:
-        case "6":
-            return
-        case "1":
-            for i in classes.osszespokemon:
-                if i.type1 == prokemon.type1 or i.type2 == prokemon.type1 or i.type1 == prokemon.type2 or i.type2 == prokemon.type2:
-                    filtered.append(i)
-            browse(0, filtered)
-        case "2":
-            filtered = search_by_stat(classes.osszespokemon, prokemon.hp, "1")
-            
-            browse(0, filtered)
-        case "3":
-            filtered = search_by_stat(classes.osszespokemon, prokemon.atk, "2")
-            
-            browse(0, filtered)
-        case "4":
-            filtered = search_by_stat(classes.osszespokemon, prokemon.defe, "3")
-            
-            browse(0, filtered)
-        case "5":
-            filtered = search_by_stat(classes.osszespokemon, prokemon.speed, "4")
-            
-            browse(0, filtered)
-        case _:
-            print("Nem opció")
-            wait(1)
-            view_prokemon(num)
+    while True:
+        clear()
+        print(f"=== {prokemon.name.upper()} ===")
+        print("-" * 50)
+        print(f"Típus: {prokemon.type1}" + (f" / {prokemon.type2}" if prokemon.type2 else ""))
+        print(f"Életpontok: {prokemon.hp}")
+        print(f"Támadás: {prokemon.atk}")
+        print(f"Védekezés: {prokemon.defe}")
+        print(f"Sebesség: {prokemon.speed}")
+        print("-" * 50)
+        
+        options = [
+            "Hasonló típusú prokemonok",
+            "Hasonló életpontú prokemonok", 
+            "Hasonló támadású prokemonok",
+            "Hasonló védekezésű prokemonok",
+            "Hasonló sebességű prokemonok",
+            "Vissza"
+        ]
+        
+        choice = menu.generic_menu(f"{prokemon.name} részletei", options)
+        
+        match choice:
+            case "1":  # Similar type
+                filtered = []
+                for pokemon in classes.osszespokemon:
+                    if (pokemon.type1 == prokemon.type1 or pokemon.type2 == prokemon.type1 or 
+                        pokemon.type1 == prokemon.type2 or pokemon.type2 == prokemon.type2):
+                        filtered.append(pokemon)
+                browse(0, filtered, f"Hasonló típusú prokemonok ({prokemon.type1})")
+            case "2":  # Similar HP
+                filtered = search_by_stat(classes.osszespokemon, prokemon.hp, "1")
+                browse(0, filtered, f"Hasonló életpontú prokemonok (~{prokemon.hp})")
+            case "3":  # Similar Attack
+                filtered = search_by_stat(classes.osszespokemon, prokemon.atk, "2")
+                browse(0, filtered, f"Hasonló támadású prokemonok (~{prokemon.atk})")
+            case "4":  # Similar Defense  
+                filtered = search_by_stat(classes.osszespokemon, prokemon.defe, "3")
+                browse(0, filtered, f"Hasonló védekezésű prokemonok (~{prokemon.defe})")
+            case "5":  # Similar Speed
+                filtered = search_by_stat(classes.osszespokemon, prokemon.speed, "4")
+                browse(0, filtered, f"Hasonló sebességű prokemonok (~{prokemon.speed})")
+            case "6":  # Back
+                return
+            case _:
+                print("Érvénytelen választás!")
+                wait(1)
 
 def search_by_stat(collection=classes.osszespokemon, value=None, stat=None):
     filtered = []
